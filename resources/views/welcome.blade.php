@@ -10,9 +10,9 @@
             padding: 0;
             height: 100%;
             width: 100%;
+            overflow: hidden;
         }
         .background-image {
-            background-image: url({{asset('/images/공간정원-공사중이미지.png')}});
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -20,6 +20,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        @media (min-width: 769px) {
+            .background-image {
+                background-image: url({{asset('/images/공간정원-공사중이미지.png')}});
+            }
+        }
+        @media (max-width: 768px) {
+            .background-image {
+                background-image: url({{asset('/images/공간정원-공사중이미지(모바일).png')}});
+            }
         }
     </style>
 </head>
