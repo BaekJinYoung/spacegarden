@@ -42,8 +42,8 @@ jobs:
           mkdir -p ~/.ssh || { echo "Failed to create .ssh directory"; exit 1; }
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts || { echo "Failed to add server host key to known_hosts"; exit 1; }
 
-      - name: Copy install.sh to server
-        run: scp scripts/install.sh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/${{ secrets.SERVER_USER }}/install.sh
+#      - name: Copy install.sh to server
+#        run: scp scripts/install.sh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/${{ secrets.SERVER_USER }}/install.sh
 
 #      - name: Execute install.sh on server
 #        uses: appleboy/ssh-action@master
