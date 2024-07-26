@@ -1,0 +1,108 @@
+name: Laravel Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, mysql
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      - name: Start SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      #      - name: Configure SSH
+      #        env:
+      #          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      #        run: |
+      #          sudo mkdir -p /home/${{ secrets.SERVER_USER }}/.ssh
+      #          echo "$SSH_PRIVATE_KEY" > /home/${{ secrets.SERVER_USER }}/.ssh/authorized_keys
+      #          sudo chmod 755 /home/${{ secrets.SERVER_USER }}/.ssh
+      #          sudo chmod 644 /home/${{ secrets.SERVER_USER }}/.ssh/authorized_keys
+
+
+      - name: Add server host key to known_hosts
+        run: |
+          mkdir -p ~/.ssh || { echo "Failed to create .ssh directory"; exit 1; }
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts || { echo "Failed to add server host key to known_hosts"; exit 1; }
+
+      - name: Copy install.sh to server
+        run: scp scripts/install.sh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/${{ secrets.SERVER_USER }}/install.sh
+
+#      - name: Execute install.sh on server
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.SERVER_HOST }}
+#          username: ${{ secrets.SERVER_USER }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          script: |
+#            echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+#
+#            export MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
+#            bash /home/${{ secrets.SERVER_USER }}/install.sh "$MYSQL_ROOT_PASSWORD"
+#            export LARAVEL_PROJECT_PATH=/home/${{ secrets.SERVER_USER }}/laravel
+#            bash /home/${{ secrets.SERVER_USER }}/install.sh "LARAVEL_PROJECT_PATH"
+#
+#            # 필요한 패키지 설치
+#            sudo apt-get update
+#            sudo apt upgrade -y
+#            sudo apt --fix-broken install
+#
+#            # Laravel 프로젝트 설정
+#            sudo mkdir -p /home/${{ secrets.SERVER_USER }}/laravel
+#            sudo chown -R $USER:$USER /home/${{ secrets.SERVER_USER }}/laravel
+#            cd /home/${{ secrets.SERVER_USER }}/laravel
+#
+#            # Git 초기화 및 소스 코드 다운로드
+#            git init
+#            git remote add origin https://BaekJinYoung:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/BaekJinYoung/Usujodal.git
+#            git fetch
+#            git checkout main
+#            git pull origin main
+#
+#            # install.sh 실행
+#            sudo -u ${{ secrets.SERVER_USER }} bash /home/${{ secrets.SERVER_USER }}/install.sh
+#
+#            # 파일 권한 설정
+#            sudo find /home/${{ secrets.SERVER_USER }}/laravel -type f -exec chmod 644 {} \;
+#            sudo find /home/${{ secrets.SERVER_USER }}/laravel -type d -exec chmod 755 {} \;
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo chown -R $(whoami) /home/${{ secrets.SERVER_USER }}/laravel
+            chmod -R u+rwX /home/${{ secrets.SERVER_USER }}/laravel
+
+            cd /home/${{ secrets.SERVER_USER }}/laravel
+            git init
+            git remote add origin https://BaekJinYoung:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/BaekJinYoung/Usujodal.git
+            git config --global --add safe.directory /home/${{ secrets.SERVER_USER }}/laravel
+            git fetch
+            git checkout main
+            git stash
+            git pull origin main
+            composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
