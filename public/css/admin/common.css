@@ -1,0 +1,172 @@
+/* 폰트 */
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 100;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Thin.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Thin.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Thin.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Thin.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Thin.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 200;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 300;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Light.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Light.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Light.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Light.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Light.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Medium.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Medium.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Medium.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Medium.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Medium.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-SemiBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-SemiBold.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-SemiBold.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-SemiBold.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Bold.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 800;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraBold.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraBold.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraBold.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 900;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Black.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Black.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Black.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Black.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Black.ttf') format("truetype");
+    font-display: swap;
+}
+
+/*===========================================================================
+	CSS 초기화
+============================================================================*/
+* { font-family: "pretendard", sans-serif; box-sizing:border-box; margin:0; padding:0; }
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, em, img, strong, b, i, dl, dt, dd, ol, ul, li, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, menu, nav, section, video, a {border:0; outline:0; font-size:100%; color:#333; line-height:1;}
+html { width: 100vw; scroll-behavior: smooth; }
+body {line-height:1; width: 100vw;-ms-overflow-style: none; height: 100%; }
+html.fixed, body.fixed { position: fixed; overflow: hidden; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+ul, ol, li {list-style:none;}
+strong {display: inline-block;}
+a {margin:0; padding:0; font-size:100%; display: block; }
+table {border-collapse:collapse; border-spacing:0;}
+input, select {vertical-align:middle;}
+p {line-height:1.5;}
+pre { font-family: "pretendard", sans-serif; white-space: pre-line; line-height: 1.5; }
+img {width: 100%;}
+input {outline:0; border: 0; background: none; font-family: "pretendard", sans-serif;}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="file"], input[type="checkbox"], input[type="radio"] { display: none; }
+label { cursor: pointer; }
+button {cursor:pointer; border: 0; outline: 0; background: none;}
+a {text-decoration: none; display: block;}
+textarea {resize: none; font-family: "pretendard", sans-serif; width: 560px; outline: unset; border: 2px solid #d8d8d8; padding: 8px 16px; }
+.col-group {display:flex;}
+.row-group {display:flex; flex-flow: column;}
+.mb{display: none;}
+
+
+/* header */
+.header-wrap { width: 240px; min-height: 100vh; display: flex; flex-flow: column; position: fixed; top: 0; left: 0; bottom: 0; box-shadow: 5px 0 10px 0 rgba(0, 0, 0, 0.16); background: #0000007d; z-index: 99999; }
+.header-wrap .header-logo {
+    width: 53px;
+    margin: 48px auto 23px;
+    display: block;
+}
+.header-wrap .menu-wrap { height: calc( 100vh - 165px - 164px ); overflow: scroll; justify-content: space-between; }
+.header-wrap .menu-wrap::-webkit-scrollbar { display: none; }
+.header-wrap .gnb { padding-bottom: 80px; }
+.header-wrap .gnb-item .item-default { height: 52px; color: #c2c2c2; font-size: 16px; gap: 16px; transition: .2s; display: flex; align-items: center; padding: 0 16px; cursor: pointer; position: relative; }
+.header-wrap .gnb-item .item-default i { font-size: 20px; color: #c2c2c2; display: inline-block; transition: .2s; }
+.header-wrap .gnb-item .item-default .xi-angle-down-thin { position: absolute; right: 16px; }
+.header-wrap .gnb-item .item-default:hover { background: #000; color: #fff; }
+.header-wrap .gnb-item .item-default:hover i { color: #fff; }
+.header-wrap .sub-gnb { display: none; }
+.header-wrap .sub-gnb-item { height: 40px; color: #c2c2c2; font-size: 14px; padding-left: 52px; line-height: 40px; transition: .2s; }
+.header-wrap .sub-gnb-item:hover { background: #000; color: #fff; }
+.coworkerweb_logo_Wrap { width: 164px; height: 42px; }
+.coworkerweb_logo_Wrap img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.header-wrap .header-btm { padding: 0 16px; position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 67px; }
+.header-wrap .header-btm .copy-txt { font-size: 12px; color: #c2c2c2; line-height: 1.67; margin-bottom: 16px; }
+.header-wrap .logout-btn { display: block; width: 100%; font-size: 16px; color: #c2c2c2; height: 67px; line-height: 67px; padding: 0 16px; background: #333; transition: .2s; cursor: pointer; text-align: left; position: absolute; width: 100%; bottom: 0; }
+.header-wrap .logout-btn i { color: #c2c2c2; display: inline-block; padding-right: 8px; transition: .2s; }
+.header-wrap .logout-btn:hover { color: #fff; }
+.header-wrap .logout-btn:hover i { color: #fff; }
+
+.header-wrap .translation_wrap { display: flex; gap: 16px; justify-content: center; margin-bottom: 40px; }
+.header-wrap .translation_wrap button { width: 48px; height: 48px; border-radius: 100%; background-color: #707070; }
+
+
+
+/* gnb-item.active */
+.gnb-item.active .xi-angle-down-thin { transform: rotate(180deg); }
+.gnb-item.active .sub-gnb { display: block; }
+
+/* pagination */
+.pagination { align-items: center; gap: 8px; margin-top: 64px; justify-content: center; }
+.pagination .page-btn {display: block; width: 32px; height: 32px; border: 1px solid #aaa; background: #fff; text-align: center; line-height: 30px; font-size: 14px; font-weight: 300; transition: .2s; color: #aaa; }
+.pagination .page-btn i { color: #aaa; }
+.pagination .page-btn:hover { background: #f5f5f5; }
+.pagination .page-btn.active { background: #484848; color: #fff; border: 1px solid #484848; }
