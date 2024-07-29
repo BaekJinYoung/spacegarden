@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,12 +26,12 @@
         }
         @media (min-width: 769px) {
             .background-image {
-                background-image: url({{asset('/images/공간정원-공사중이미지.png')}});
+                background-image: url('{{ asset("/images/공간정원-공사중이미지.png") }}');
             }
         }
         @media (max-width: 768px) {
             .background-image {
-                background-image: url({{asset('/images/공간정원-공사중이미지(모바일).png')}});
+                background-image: url('{{ asset("/images/공간정원-공사중이미지(모바일).png") }}');
             }
         }
     </style>
