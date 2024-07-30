@@ -81,7 +81,7 @@ class BaseController extends Controller
             if ($fileExists) {
                 $originalFileName = pathinfo($filePath, PATHINFO_FILENAME);
                 $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-                $formattedFileName = $originalFileName . '_' . time() . '.' . $extension;
+                $formattedFileName = $originalFileName . '.' . $extension;
                 $item->{$attribute . '_name'} = $formattedFileName;
                 $item->{$attribute} = asset('storage/' . $filePath);
             } else {
@@ -116,6 +116,17 @@ class BaseController extends Controller
 
         if (isset($data['content'])) {
             $data['content'] = preg_replace('/^<p>(.*?)<\/p>$/s', '$1', $data['content']);
+        }
+
+        if ($request->hasFile('image')) {
+            $fileName = $request->file('image')->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('images', $fileName, 'public');
+            $data['image'] = $filePath;
+        } elseif ($request->input('remove_image') == '1') {
+            if ($item->image) {
+                Storage::delete('public/' . $item->image);
+            }
+            $data['image'] = null;
         }
 
         if ($request->hasFile('file')) {
