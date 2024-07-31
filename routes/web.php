@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\FileController;
-use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\admin\AnnouncementController;
+use App\Http\Controllers\admin\FileController;
+use App\Http\Controllers\admin\InquiryController;
+use App\Http\Controllers\admin\QuestionController;
+use App\Http\Controllers\admin\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,6 +46,14 @@ Route::prefix('admin')->group(function () {
             Route::get('/{review}/edit', 'edit')->name("admin.reviewEdit");
             Route::patch('/{review}', 'update')->name("admin.reviewUpdate");
             Route::delete('/{review}', 'delete')->name("admin.reviewDelete");
+        });
+    });
+
+    Route::prefix('inquiry')->group(function () {
+        Route::controller(InquiryController::class)->group(function () {
+            Route::get('/', 'index')->name("admin.inquiryIndex");
+            Route::get('/{inquiry}/edit', 'edit')->name("admin.inquiryEdit");
+            Route::delete('/{inquiry}', 'delete')->name("admin.inquiryDelete");
         });
     });
 });

@@ -176,7 +176,7 @@
         fileInput.addEventListener('change', function() {
             let file = this.files[0];
             let formData = new FormData();
-            formData.append('image', file);
+            formData.append('iamge', file);
 
             fetch("{{ route('admin.uploadFile') }}", {
                 method: 'POST',

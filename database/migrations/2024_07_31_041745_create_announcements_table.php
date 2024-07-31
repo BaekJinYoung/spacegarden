@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
             $table->string('title'); // 제목
-            $table->text('content'); // 내용
-            $table->string('file_path')->nullable(); // 첨부파일
+            $table->longText('content'); // 내용(에디터)
+            $table->string('file')->nullable(); // 첨부파일
             $table->unsignedBigInteger('views')->default(0); // 조회수
             $table->boolean('is_featured')->default(false); // 상단 공지
             $table->timestamps();
