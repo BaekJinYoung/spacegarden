@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Services\ValidationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BaseController
 {
     protected $model;
+    protected $validationService;
     protected $defaultPerPage = 15;
 
-    public function __construct($model) {
+    public function __construct($model, ValidationService $validationService) {
         $this->model = $model;
+        $this->validationService = $validationService;
     }
 
     public function index(Request $request) {
@@ -55,7 +58,9 @@ class BaseController
     }
 
     public function store(Request $request) {
-        $store = $this->handleRequest($request);
+        $validatedData = $this->validationService->validate($request, $this->getValidationContext());
+
+        $store = $this->handleRequest($validatedData);
 
         $this->model->create($store);
 
@@ -113,6 +118,8 @@ class BaseController
             return redirect()->route($this->getRouteName('index'))
                 ->with('error', '해당 항목을 찾을 수 없습니다.');
         }
+
+        $data = $this->validationService->validate($request, $this->getValidationContext());
 
         $data = $this->handleRequest($request, $item);
 
