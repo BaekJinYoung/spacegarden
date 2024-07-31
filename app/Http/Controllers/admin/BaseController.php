@@ -58,9 +58,9 @@ class BaseController
     }
 
     public function store(Request $request) {
-        $validatedData = $this->validationService->validate($request, $this->getValidationContext());
+        $store = $this->validationService->validate($request, $this->getValidationContext());
 
-        $store = $this->handleRequest($validatedData);
+        $store = $this->handleRequest($request);
 
         $this->model->create($store);
 

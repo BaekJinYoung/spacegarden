@@ -42,10 +42,10 @@
                     </div>
                     <div class="form-item row-group">
                         <p class="item-default">
-                            모바일 제목
+                            소제목
                             <span class="red">*</span>
                         </p>
-                        <textarea rows="2" name="mobile_title" id="mobile_title"  placeholder="제목을 입력하세요">{{old('mobile_title')}}</textarea>
+                        <textarea rows="2" name="subTitle" id="subTitle"  placeholder="제목을 입력하세요">{{old('subTitle')}}</textarea>
                     </div>
                     <div class="form-item row-group">
                         <p class="item-default">
@@ -82,6 +82,13 @@
                                 </button>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-item row-group">
+                        <p class="item-default">
+                            링크(선택)
+                        </p>
+                        <input type="text" name="link" class="form-input" id="link" value="{{old('link')}}"
+                               placeholder="링크를 입력하세요(https:// 포함), 선택사항">
                     </div>
                 </div>
                 <div class="form-btn-wrap col-group">

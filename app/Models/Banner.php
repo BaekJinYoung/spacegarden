@@ -13,9 +13,10 @@ class Banner extends Model
 
     protected $fillable = [
         'title',
-        'mobile_title',
+        'subTitle',
         'image',
         'mobile_image',
+        'link',
     ];
 
     protected $dates = ['deleted_at'];

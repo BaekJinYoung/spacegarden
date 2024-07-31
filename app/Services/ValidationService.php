@@ -42,6 +42,8 @@ class ValidationService
 
         if ($request->input('remove_image') == 0) {
             $rules['image'] = 'nullable';
+        } else {
+            $rules['image'] = 'required';
         }
 
         return $rules;
@@ -51,13 +53,22 @@ class ValidationService
     {
         $rules = [
             'title' => 'required',
+            'subTitle' => 'required',
             'image' => 'required',
-            'mobile_title' => 'required',
             'mobile_image' => 'required',
+            'link' => 'nullable',
         ];
 
         if ($request->input('remove_image') == 0) {
             $rules['image'] = 'nullable';
+        } elseif ($request->input('remove_image') == 1) {
+            $rules['image'] = 'required';
+        }
+
+        if ($request->input('mobile_remove_image') == 0) {
+            $rules['mobile_image'] = 'nullable';
+        } elseif ($request->input('mobile_remove_image') == 1) {
+            $rules['mobile_image'] = 'required';
         }
 
         return $rules;

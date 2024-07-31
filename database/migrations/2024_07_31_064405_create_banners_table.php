@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string('title'); // 제목
+            $table->string('subTitle'); // 소제목
             $table->string('image'); // 이미지
-            $table->string('mobile_title'); // 모바일 제목
             $table->string('mobile_image'); // 모바일 이미지
+            $table->string('link')->nullable(); // 링크
             $table->timestamps();
             $table->softDeletes(); //삭제일
         });

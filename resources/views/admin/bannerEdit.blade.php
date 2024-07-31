@@ -36,17 +36,17 @@
                 <div class="form-wrap row-group">
                     <div class="form-item row-group">
                         <p class="item-default">
-                            제목
+                            대제목
                             <span class="red">*</span>
                         </p>
                         <textarea rows="2" name="title" placeholder="제목을 작성해주세요.">{{old('title', $item->title)}}</textarea>
                     </div>
                     <div class="form-item row-group">
                         <p class="item-default">
-                            모바일 제목
+                            소제목
                             <span class="red">*</span>
                         </p>
-                        <textarea rows="2" name="mobile_title" placeholder="제목을 작성해주세요.">{{old('mobile_title', $item->mobile_title)}}</textarea>
+                        <textarea rows="2" name="subTitle" placeholder="제목을 작성해주세요.">{{old('subTitle', $item->subTitle)}}</textarea>
                     </div>
                     <div class="form-item row-group">
                         <p class="item-default">
@@ -95,6 +95,12 @@
                         </div>
                         <input type="hidden" name="mobile_remove_image" id="mobile_remove_image" value="{{ old('mobile_remove_image', 0) }}">
                         </div>
+                    </div>
+                    <div class="form-item row-group">
+                        <p class="item-default">
+                            링크(선택)
+                        </p>
+                        <input type="text" name="link" class="form-input" value="{{old('link', $item->link)}}" placeholder='링크를 입력하세요(https:// 포함), 선택사항'>
                     </div>
                 </div>
 
