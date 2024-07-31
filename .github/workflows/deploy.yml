@@ -71,7 +71,7 @@ jobs:
 
             # Git 초기화 및 소스 코드 다운로드
             git init
-            git remote add origin https://BaekJinYoung:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/BaekJinYoung/Usujodal.git
+            git remote add origin https://BaekJinYoung:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/BaekJinYoung/spacegarden.git
             git fetch
             git checkout main
             git pull origin main
@@ -95,7 +95,7 @@ jobs:
 #
 #            cd /home/${{ secrets.SERVER_USER }}/laravel
 #            git init
-#            git remote add origin https://BaekJinYoung:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/BaekJinYoung/Usujodal.git
+#            git remote add origin https://BaekJinYoung:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/BaekJinYoung/spacegarden.git
 #            git config --global --add safe.directory /home/${{ secrets.SERVER_USER }}/laravel
 #            git fetch
 #            git checkout main
