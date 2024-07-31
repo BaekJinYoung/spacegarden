@@ -10,9 +10,19 @@ class ValidationService
 {
     public function validate(Request $request, string $context): array
     {
+        $rules = $this->getValidationRules($request, $context);
+
+        return $this->performValidation($request, $rules);
+    }
+
+    public function getValidationRules(Request $request, string $context): array
+    {
         switch ($context) {
             case 'popup':
                 return $this->validatePopup($request);
+
+            case 'banner':
+                return $this->validateBanner($request);
 
             case 'question':
                 return $this->validateQuestion($request);
@@ -34,7 +44,23 @@ class ValidationService
             $rules['image'] = 'nullable';
         }
 
-        return $this->performValidation($request, $rules);
+        return $rules;
+    }
+
+    protected function validateBanner(Request $request): array
+    {
+        $rules = [
+            'title' => 'required',
+            'image' => 'required',
+            'mobile_title' => 'required',
+            'mobile_image' => 'required',
+        ];
+
+        if ($request->input('remove_image') == 0) {
+            $rules['image'] = 'nullable';
+        }
+
+        return $rules;
     }
 
     protected function validateQuestion(Request $request): array
