@@ -51,7 +51,7 @@ class ValidationService
 
         if ($request->input('remove_image') == 0) {
             $rules['image'] = 'nullable';
-        } else {
+        } elseif ($request->input('remove_image') == 1) {
             $rules['image'] = 'required';
         }
 
