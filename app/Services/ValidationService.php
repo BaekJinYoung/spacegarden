@@ -24,8 +24,14 @@ class ValidationService
             case 'banner':
                 return $this->validateBanner($request);
 
+            case 'announcement':
+                return $this->validateAnnouncement($request);
+
             case 'question':
                 return $this->validateQuestion($request);
+
+            case 'review':
+                return $this->validateReview($request);
 
             default:
                 throw new InvalidArgumentException('Invalid validation context: ' . $context);
@@ -74,11 +80,41 @@ class ValidationService
         return $rules;
     }
 
+    protected function validateAnnouncement(Request $request): array
+    {
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+            'is_featured' => 'required|boolean',
+            'file' => 'nullable|file|max:10240',
+        ];
+
+        return $rules;
+    }
+
     protected function validateQuestion(Request $request): array
     {
-        $rules = ['title' => 'required|string|max:255', 'content' => 'required|string',];
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+        ];
 
-        return $this->performValidation($request, $rules);
+        return $rules;
+    }
+
+    protected function validateReview(Request $request): array
+    {
+        $rules = [
+            'title' => 'required|string|max:255',
+            'content' => 'required',
+            'filter_category' => 'required',
+            'filter_area' => 'required',
+            'image' => 'nullable',
+            'is_featured' => 'required|boolean',
+            'file' => 'nullable',
+        ];
+
+        return $rules;
     }
 
     protected function performValidation(Request $request, array $rules): array

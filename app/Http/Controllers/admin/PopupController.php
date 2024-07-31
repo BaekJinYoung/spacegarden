@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Requests\PopupRequest;
 use App\Models\Popup;
 use App\Services\ValidationService;
 

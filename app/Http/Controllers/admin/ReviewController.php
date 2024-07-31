@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Review;
+use App\Services\ValidationService;
 
 class ReviewController extends BaseController
 {
-    public function __construct(Review $review) {
-        parent::__construct($review);
+    public function __construct(Review $review, ValidationService $validationService) {
+        parent::__construct($review, $validationService);
         $this->setDefaultPerPage(10);
+    }
+
+    protected function getValidationContext(): string {
+        return 'review';
     }
 }
