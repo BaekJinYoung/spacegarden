@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class BaseController extends Controller
+class BaseController
 {
     protected $model;
     protected $defaultPerPage = 15;
@@ -30,10 +30,20 @@ class BaseController extends Controller
 
         $items->getCollection()->transform(function ($item) {
             $item->is_featured = $item->is_featured ? 'Y' : 'N';
+            $item->is_video = $this->isVideo('storage/'.$item->image);
+            $item->is_mobile_video = $this->isVideo('storage/'.$item->mobile_image);
             return $item;
         });
 
         return view($this->getViewName('index'), compact('items', 'perPage', 'search'));
+    }
+
+    public function isVideo($filePath)
+    {
+        $videoExtensions = ['mp4', 'webm', 'ogg'];
+        $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+
+        return in_array($extension, $videoExtensions);
     }
 
     public function setDefaultPerPage($value) {
@@ -127,6 +137,17 @@ class BaseController extends Controller
                 Storage::delete('public/' . $item->image);
             }
             $data['image'] = null;
+        }
+
+        if ($request->hasFile('mobile_image')) {
+            $fileName = $request->file('mobile_image')->getClientOriginalName();
+            $filePath = $request->file('mobile_image')->storeAs('images', $fileName, 'public');
+            $data['mobile_image'] = $filePath;
+        } elseif ($request->input('remove_image') == '1') {
+            if ($item->mobile_image) {
+                Storage::delete('public/' . $item->mobile_image);
+            }
+            $data['mobile_image'] = null;
         }
 
         if ($request->hasFile('file')) {

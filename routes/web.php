@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AnnouncementController;
+use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\FileController;
 use App\Http\Controllers\admin\InquiryController;
 use App\Http\Controllers\admin\QuestionController;
@@ -14,6 +15,17 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::controller(FileController::class)->group(function () {
         Route::post('/upload', 'uploadFile')->name("admin.uploadFile");
+    });
+
+    Route::prefix('banner')->group(function () {
+        Route::controller(BannerController::class)->group(function () {
+            Route::get('/', 'index')->name("admin.bannerIndex");
+            Route::get('/create', 'create')->name("admin.bannerCreate");
+            Route::post('/store', 'store')->name("admin.bannerStore");
+            Route::get('/{banner}/edit', 'edit')->name("admin.bannerEdit");
+            Route::patch('/{banner}', 'update')->name("admin.bannerUpdate");
+            Route::delete('/{banner}', 'delete')->name("admin.bannerDelete");
+        });
     });
 
     Route::prefix('announcement')->group(function () {
