@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\InquiryController;
 use App\Http\Controllers\admin\PopupController;
 use App\Http\Controllers\admin\QuestionController;
 use App\Http\Controllers\admin\ReviewController;
+use App\Http\Controllers\admin\YoutubeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +38,17 @@ Route::prefix('admin')->group(function () {
             Route::get('/{banner}/edit', 'edit')->name("admin.bannerEdit");
             Route::patch('/{banner}', 'update')->name("admin.bannerUpdate");
             Route::delete('/{banner}', 'delete')->name("admin.bannerDelete");
+        });
+    });
+
+    Route::prefix('youtube')->group(function () {
+        Route::controller(YoutubeController::class)->group(function () {
+            Route::get('/', 'index')->name("admin.youtubeIndex");
+            Route::get('/create', 'create')->name("admin.youtubeCreate");
+            Route::post('/store', 'store')->name("admin.youtubeStore");
+            Route::get('/{youtube}/edit', 'edit')->name("admin.youtubeEdit");
+            Route::patch('/{youtube}', 'update')->name("admin.youtubeUpdate");
+            Route::delete('/{youtube}', 'delete')->name("admin.youtubeDelete");
         });
     });
 

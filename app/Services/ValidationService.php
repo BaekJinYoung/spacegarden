@@ -24,6 +24,9 @@ class ValidationService
             case 'banner':
                 return $this->validateBanner($request);
 
+            case 'youtube':
+                return $this->validateYoutube($request);
+
             case 'announcement':
                 return $this->validateAnnouncement($request);
 
@@ -87,6 +90,17 @@ class ValidationService
             'content' => 'required',
             'is_featured' => 'required|boolean',
             'file' => 'nullable|file|max:10240',
+        ];
+
+        return $rules;
+    }
+
+    protected function validateYoutube(Request $request): array
+    {
+        $rules = [
+            'title' => 'required',
+            'link' => 'required',
+            'is_featured' => 'required|boolean',
         ];
 
         return $rules;
