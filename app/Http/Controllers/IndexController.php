@@ -15,11 +15,61 @@ use Illuminate\Support\Carbon;
 
 class IndexController extends Controller
 {
+    /**
+     * Retrieve the main response data including popups, banners, YouTube videos, and reviews.
+     *
+     * 팝업, 배너, 유튜브, 고객 후기를 포함한 메인 페이지 데이터를 가져옵니다.
+     *
+     * @group Main
+     *
+     * @response 200 {
+     *   "success": true, // true-정상 호출 / false-호출 오류
+     *   "message": "Success", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류
+     *   "data": {
+     *     "popup": [
+     *       {
+     *         "id": 3, // 팝업 ID
+     *         "title": "팝업 링크", // 팝업 제목
+     *         "image": "http://43.201.247.176/storage/images/TEST_모바일.jpg", // 이미지 URL
+     *         "link": "https://www.youtube.com/" // 팝업 링크, 데이터가 없을 시 null
+     *       }
+     *     ],
+     *     "banner": [
+     *       {
+     *         "id": 2, // 배너 ID
+     *         "title": "영상 테스트", // 배너 제목
+     *         "subTitle": "소제목", // 배너 소제목
+     *         "image": "http://43.201.247.176/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4", // 사진 혹은 동영상 URL
+     *         "mobile_image": "http://43.201.247.176/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4", // 모바일 사진 혹은 동영상 URL
+     *         "link": "https://www.youtube.com/", // 배너 링크
+     *         "image_type": 1, // 이미지 타입 (0: 이미지, 1: 비디오)
+     *         "mobile_image_type": 1 // 모바일 이미지 타입 (0: 이미지, 1: 비디오)
+     *       }
+     *     ],
+     *     "youtube": [
+     *       {
+     *         "id": 1, // 유튜브 ID
+     *         "title": "메인 노출", // 제목
+     *         "created_at_formatted": "2024.08.01", // 게시일, 형식: "Y.m.d"
+     *         "video_id": "ncNL6tP_dsI" // 유튜브 비디오 ID
+     *       }
+     *     ],
+     *     "reviews": [
+     *       {
+     *         "id": 1, // 고객후기 ID
+     *         "title": "메인 화면 노출", // 제목
+     *         "content": "내용</p><p><br></p><p><br></p><p>이미지 삽입</p><p><br></p><p><img src=\"http://43.201.247.176/storage/images/TEST_모바일.jpg\">" // 후기 내용, HTML 형식
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+
     public function mainRespond() {
         $popup = $this->fetchAndFormat(Popup::class, ['id', 'title', 'image','link'], 0);
         $banner = $this->fetchAndFormat(Banner::class, ['id', 'title', 'subTitle', 'image', 'mobile_image', 'link'], 0, false, 'asc');
         $youtubes = $this->fetchAndFormat(Youtube::class, ['id', 'title', 'link', 'created_at'], 9, true);
-        $reviews = $this->fetchAndFormat(Review::class, ['id', 'title', 'content'], 9, true);
+        $reviews = $this->fetchAndFormat(Review::class, ['id', 'image', 'title', 'content'], 9, true);
 
         $main = [
             'popup' => $popup,

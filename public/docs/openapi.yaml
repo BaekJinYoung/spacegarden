@@ -44,6 +44,130 @@ paths:
       tags:
         - Announcements
       security: []
+  '/api/company/{id}':
+    get:
+      summary: ''
+      operationId: getApiCompanyId
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the company.'
+        example: est
+        required: true
+        schema:
+          type: string
+  '/api/youtube/{id}':
+    get:
+      summary: ''
+      operationId: getApiYoutubeId
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the youtube.'
+        example: mollitia
+        required: true
+        schema:
+          type: string
+  '/api/announcement/{id}':
+    get:
+      summary: ''
+      operationId: getApiAnnouncementId
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the announcement.'
+        example: provident
+        required: true
+        schema:
+          type: string
+  '/api/share/{id}':
+    get:
+      summary: ''
+      operationId: getApiShareId
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the share.'
+        example: voluptatem
+        required: true
+        schema:
+          type: string
   /api/inquiry:
     post:
       summary: 'Store a new inquiry.'
@@ -102,6 +226,23 @@ paths:
                 - name
                 - contact
                 - agreement
+      security: []
+  /api/main:
+    get:
+      summary: 'Retrieve the main response data including popups, banners, YouTube videos, and reviews.'
+      operationId: retrieveTheMainResponseDataIncludingPopupsBannersYouTubeVideosAndReviews
+      description: '팝업, 배너, 유튜브, 고객 후기를 포함한 메인 페이지 데이터를 가져옵니다.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"popup\": [\n      {\n        \"id\": 3, // 팝업 ID\n        \"title\": \"팝업 링크\", // 팝업 제목\n        \"image\": \"http://43.201.247.176/storage/images/TEST_모바일.jpg\", // 이미지 URL\n        \"link\": \"https://www.youtube.com/\" // 팝업 링크, 데이터가 없을 시 null\n      }\n    ],\n    \"banner\": [\n      {\n        \"id\": 2, // 배너 ID\n        \"title\": \"영상 테스트\", // 배너 제목\n        \"subTitle\": \"소제목\", // 배너 소제목\n        \"image\": \"http://43.201.247.176/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4\", // 사진 혹은 동영상 URL\n        \"mobile_image\": \"http://43.201.247.176/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4\", // 모바일 사진 혹은 동영상 URL\n        \"link\": \"https://www.youtube.com/\", // 배너 링크\n        \"image_type\": 1, // 이미지 타입 (0: 이미지, 1: 비디오)\n        \"mobile_image_type\": 1 // 모바일 이미지 타입 (0: 이미지, 1: 비디오)\n      }\n    ],\n    \"youtube\": [\n      {\n        \"id\": 1, // 유튜브 ID\n        \"title\": \"메인 노출\", // 제목\n        \"created_at_formatted\": \"2024.08.01\", // 게시일, 형식: \"Y.m.d\"\n        \"video_id\": \"ncNL6tP_dsI\" // 유튜브 비디오 ID\n      }\n    ],\n    \"reviews\": [\n      {\n        \"id\": 1, // 고객후기 ID\n        \"title\": \"메인 화면 노출\", // 제목\n        \"content\": \"내용</p><p><br></p><p><br></p><p>이미지 삽입</p><p><br></p><p><img src=\\\"http://43.201.247.176/storage/images/TEST_모바일.jpg\\\">\" // 후기 내용, HTML 형식\n      }\n    ]\n  }\n}"
+      tags:
+        - Main
       security: []
   /api/question:
     get:
@@ -182,7 +323,13 @@ tags:
     name: Announcements
     description: ''
   -
+    name: Endpoints
+    description: ''
+  -
     name: Inquiries
+    description: ''
+  -
+    name: Main
     description: ''
   -
     name: Questions

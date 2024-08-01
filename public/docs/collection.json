@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "\uacf5\uac04\uc815\uc6d0 API Documentation",
-        "_postman_id": "dc76845b-02e1-4182-9f3a-a8eb5d4dbe6c",
+        "_postman_id": "b1ffe258-d9bd-4118-8623-5ffbe28e1af8",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -70,6 +70,236 @@
             ]
         },
         {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/company\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/company\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/company\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "est",
+                                    "description": "The ID of the company."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/youtube\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/youtube\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/youtube\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "mollitia",
+                                    "description": "The ID of the youtube."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/announcement\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/announcement\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/announcement\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "provident",
+                                    "description": "The ID of the announcement."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/share\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/share\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/share\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "voluptatem",
+                                    "description": "The ID of the share."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Inquiries",
             "description": "",
             "item": [
@@ -113,6 +343,47 @@
                             "header": [],
                             "code": 400,
                             "body": "{\n    \"success\": false, \/\/ \uc694\uccad\uc774 \uc2e4\ud328\ud588\uc74c\uc744 \ub098\ud0c0\ub0c5\ub2c8\ub2e4.\n    \"message\": \"Validation Error\", \/\/ \uc720\ud6a8\uc131 \uac80\uc0ac \uc624\ub958 \uba54\uc2dc\uc9c0\n    \"errors\": { \/\/ \uc2e4\ud328\ud55c \uc720\ud6a8\uc131 \uac80\uc0ac \ud56d\ubaa9\uacfc \uc624\ub958 \uba54\uc2dc\uc9c0\n       \/\/ \uc791\uc131 \uc911\n    }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Main",
+            "description": "",
+            "item": [
+                {
+                    "name": "Retrieve the main response data including popups, banners, YouTube videos, and reviews.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/main",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/main"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\ud31d\uc5c5, \ubc30\ub108, \uc720\ud29c\ube0c, \uace0\uac1d \ud6c4\uae30\ub97c \ud3ec\ud568\ud55c \uba54\uc778 \ud398\uc774\uc9c0 \ub370\uc774\ud130\ub97c \uac00\uc838\uc635\ub2c8\ub2e4.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true, \/\/ true-\uc815\uc0c1 \ud638\ucd9c \/ false-\ud638\ucd9c \uc624\ub958\n  \"message\": \"Success\", \/\/ Success-\uc815\uc0c1 \ud638\ucd9c \/ \uac8c\uc2dc\ubb3c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.-\uc815\uc0c1 \ud638\ucd9c, \ub370\uc774\ud130 \uc5c6\uc74c \/ \uac80\uc0c9 \uacb0\uacfc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uac80\uc0c9\uc5b4:-\uc815\uc0c1 \ud638\ucd9c, \uac80\uc0c9 \uacb0\uacfc \uc5c6\uc74c \/ Error-\ud638\ucd9c \uc624\ub958\n  \"data\": {\n    \"popup\": [\n      {\n        \"id\": 3, \/\/ \ud31d\uc5c5 ID\n        \"title\": \"\ud31d\uc5c5 \ub9c1\ud06c\", \/\/ \ud31d\uc5c5 \uc81c\ubaa9\n        \"image\": \"http:\/\/43.201.247.176\/storage\/images\/TEST_\ubaa8\ubc14\uc77c.jpg\", \/\/ \uc774\ubbf8\uc9c0 URL\n        \"link\": \"https:\/\/www.youtube.com\/\" \/\/ \ud31d\uc5c5 \ub9c1\ud06c, \ub370\uc774\ud130\uac00 \uc5c6\uc744 \uc2dc null\n      }\n    ],\n    \"banner\": [\n      {\n        \"id\": 2, \/\/ \ubc30\ub108 ID\n        \"title\": \"\uc601\uc0c1 \ud14c\uc2a4\ud2b8\", \/\/ \ubc30\ub108 \uc81c\ubaa9\n        \"subTitle\": \"\uc18c\uc81c\ubaa9\", \/\/ \ubc30\ub108 \uc18c\uc81c\ubaa9\n        \"image\": \"http:\/\/43.201.247.176\/storage\/images\/\ub300\ud328\uc0bc\uacb9\uc0b4 \ub36e\ubc25 -- \ubd80\ud0c0\ub3d9 -- \ub36e\ubc25 \ub808\uc2dc\ud53c -- \ub300\ud328\uc0bc\uacb9\uc0b4 \uc694\ub9ac.mp4\", \/\/ \uc0ac\uc9c4 \ud639\uc740 \ub3d9\uc601\uc0c1 URL\n        \"mobile_image\": \"http:\/\/43.201.247.176\/storage\/images\/\ub300\ud328\uc0bc\uacb9\uc0b4 \ub36e\ubc25 -- \ubd80\ud0c0\ub3d9 -- \ub36e\ubc25 \ub808\uc2dc\ud53c -- \ub300\ud328\uc0bc\uacb9\uc0b4 \uc694\ub9ac.mp4\", \/\/ \ubaa8\ubc14\uc77c \uc0ac\uc9c4 \ud639\uc740 \ub3d9\uc601\uc0c1 URL\n        \"link\": \"https:\/\/www.youtube.com\/\", \/\/ \ubc30\ub108 \ub9c1\ud06c\n        \"image_type\": 1, \/\/ \uc774\ubbf8\uc9c0 \ud0c0\uc785 (0: \uc774\ubbf8\uc9c0, 1: \ube44\ub514\uc624)\n        \"mobile_image_type\": 1 \/\/ \ubaa8\ubc14\uc77c \uc774\ubbf8\uc9c0 \ud0c0\uc785 (0: \uc774\ubbf8\uc9c0, 1: \ube44\ub514\uc624)\n      }\n    ],\n    \"youtube\": [\n      {\n        \"id\": 1, \/\/ \uc720\ud29c\ube0c ID\n        \"title\": \"\uba54\uc778 \ub178\ucd9c\", \/\/ \uc81c\ubaa9\n        \"created_at_formatted\": \"2024.08.01\", \/\/ \uac8c\uc2dc\uc77c, \ud615\uc2dd: \"Y.m.d\"\n        \"video_id\": \"ncNL6tP_dsI\" \/\/ \uc720\ud29c\ube0c \ube44\ub514\uc624 ID\n      }\n    ],\n    \"reviews\": [\n      {\n        \"id\": 1, \/\/ \uace0\uac1d\ud6c4\uae30 ID\n        \"title\": \"\uba54\uc778 \ud654\uba74 \ub178\ucd9c\", \/\/ \uc81c\ubaa9\n        \"content\": \"\ub0b4\uc6a9<\/p><p><br><\/p><p><br><\/p><p>\uc774\ubbf8\uc9c0 \uc0bd\uc785<\/p><p><br><\/p><p><img src=\\\"http:\/\/43.201.247.176\/storage\/images\/TEST_\ubaa8\ubc14\uc77c.jpg\\\">\" \/\/ \ud6c4\uae30 \ub0b4\uc6a9, HTML \ud615\uc2dd\n      }\n    ]\n  }\n}",
                             "name": ""
                         }
                     ]
