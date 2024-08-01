@@ -6,6 +6,7 @@ use App\Http\Resources\ApiResponse;
 use App\Models\Announcement;
 use App\Models\Banner;
 use App\Models\Inquiry;
+use App\Models\Popup;
 use App\Models\Question;
 use App\Models\Review;
 use App\Models\Youtube;
@@ -14,6 +15,79 @@ use Illuminate\Support\Carbon;
 
 class IndexController extends Controller
 {
+    public function mainRespond() {
+        $popup = $this->fetchAndFormat(Popup::class, ['id', 'title', 'image','link'], 0);
+        $banner = $this->fetchAndFormat(Banner::class, ['id', 'title', 'subTitle', 'image', 'mobile_image', 'link'], 0, false, 'asc');
+        $youtubes = $this->fetchAndFormat(Youtube::class, ['id', 'title', 'link', 'created_at'], 9, true);
+        $reviews = $this->fetchAndFormat(Review::class, ['id', 'title', 'content'], 9, true);
+
+        $main = [
+            'popup' => $popup,
+            'banner' => $banner,
+            'youtube' => $youtubes,
+            'reviews' => $reviews,
+        ];
+
+        return ApiResponse::success($main);
+    }
+
+    private function fetchAndFormat($model, $selectColumns, $limit, $isFeatured = false, $sortDirection = 'desc') {
+        if (!in_array($sortDirection, ['asc', 'desc'])) {
+            $sortDirection = 'desc';
+        }
+
+        $query = $model::select($selectColumns)
+            ->orderBy('id', $sortDirection);
+
+        if ($isFeatured) {
+            $query->where('is_featured', true);
+        }
+
+        if ($limit > 0) {
+            $query->limit($limit);
+        }
+
+        $data = $query->get();
+
+        if ($data->isEmpty()) {
+            return null;
+        }
+
+        $data = $data->map(function ($item) {
+            return $this->formatItemWithImage($this->formatItem($item));
+        });
+
+        $isYoutubeModel = $model === Youtube::class;
+
+        $data = $data->map(function ($item) use ($isYoutubeModel) {
+            if ($isYoutubeModel && isset($item->link)) {
+                $youtubeVideoId = $this->extractYoutubeVideoId($item->link);
+                $item->video_id = $youtubeVideoId;
+                unset($item->link);
+            }
+
+            return $this->formatItemWithImage($item);
+        });
+
+        $formattedData = $this->formatCollection($data);
+
+        if ($formattedData->isEmpty()) {
+            return ApiResponse::success([], '게시물이 없습니다.');
+        }
+
+        return $formattedData;
+    }
+
+    private function extractYoutubeVideoId($url) {
+        preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i', $url, $matches);
+        return $matches[1] ?? null;
+    }
+
+    private function formatCollection($collection) {
+        return $collection->transform(function ($item) {
+            return $this->formatItem($item);
+        });
+    }
 
     /**
      * Retrieve a list of announcements.
