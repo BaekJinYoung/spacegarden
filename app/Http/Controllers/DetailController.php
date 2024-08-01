@@ -182,6 +182,24 @@ class DetailController extends Controller
         return $orderedDetail;
     }
 
+    /**
+     * 다운로드
+     *
+     * 요청에서 제공된 ID와 모델 이름에 따라 파일을 다운로드합니다.
+     * 유효한 요청이 아니거나 파일이 존재하지 않는 경우, 오류 응답을 반환합니다.
+     *
+     * @group Download
+     * @param \Illuminate\Http\Request $request The incoming HTTP request instance.
+     *
+     * @queryParam id integer 다운로드할 게시물의 ID입니다.       Example: 2
+     * @queryParam model string 다운로드할 모델의 유형입니다. 가능한 값: announcement, review       Example: announcement
+     *
+     * @response 404 {
+     *  "success": false,
+     *  "message": "파일이 존재하지 않습니다."
+     * }
+     */
+
     public function downloadFile(Request $request)
     {
         $request->validate([

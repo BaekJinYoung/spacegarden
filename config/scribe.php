@@ -137,19 +137,27 @@ return [
                     <tbody>
                             <tr>
                                 <td>Announcements</td>
-                                <td>공지사항 목록</td>
+                                <td>공지사항</td>
+                            </tr>
+                            <tr>
+                                <td>Download</td>
+                                <td>다운로드</td>
                             </tr>
                             <tr>
                                 <td>Inquiries</td>
                                 <td>문의하기</td>
                             </tr>
                             <tr>
+                                <td>Main</td>
+                                <td>메인</td>
+                            </tr>
+                            <tr>
                                 <td>Questions</td>
-                                <td>자주묻는 질문 목록</td>
+                                <td>자주묻는 질문</td>
                             </tr>
                             <tr>
                                 <td>Reviews</td>
-                                <td>고객후기 목록</td>
+                                <td>고객후기</td>
                             </tr>
 
                     </tbody>
