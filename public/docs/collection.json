@@ -1,0 +1,221 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "\uacf5\uac04\uc815\uc6d0 API Documentation",
+        "_postman_id": "7c7411b3-c2f3-4147-bebe-409264953cdc",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Announcements",
+            "description": "",
+            "item": [
+                {
+                    "name": "Retrieve a list of announcements.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/announcement",
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "",
+                                    "description": "\uac80\uc0c9\ud560 \uac8c\uc2dc\ubb3c\uc758 \uc81c\ubaa9\uc785\ub2c8\ub2e4. \uac80\uc0c9\uc744 \ud558\uc9c0 \uc54a\uc744 \uacbd\uc6b0 \ube48\uac12( \"\"||null)\uc744 \uc785\ub825\ud569\ub2c8\ub2e4.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "",
+                                    "description": "\ud398\uc774\uc9c0 \ubc88\ud638\uc785\ub2c8\ub2e4. \uae30\ubcf8\uac12\uc740 null\uc785\ub2c8\ub2e4.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/announcement?search=&page="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\uacf5\uc9c0\uc0ac\ud56d \ubaa9\ub85d\uc744 \uac00\uc838\uc635\ub2c8\ub2e4. \uac01 \uac8c\uc2dc\ubb3c\uc740 ID, \uc81c\ubaa9, \uba54\uc778 \ud45c\ucd9c \uc5ec\ubd80, \uc0dd\uc131 \ub0a0\uc9dc\ub97c \ud3ec\ud568\ud569\ub2c8\ub2e4.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true, \/\/ true-\uc815\uc0c1 \ud638\ucd9c \/ false-\ud638\ucd9c \uc624\ub958\n  \"message\": \"Success\", \/\/ Success-\uc815\uc0c1 \ud638\ucd9c \/ \uac8c\uc2dc\ubb3c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.-\uc815\uc0c1 \ud638\ucd9c, \ub370\uc774\ud130 \uc5c6\uc74c \/ \uac80\uc0c9 \uacb0\uacfc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uac80\uc0c9\uc5b4:-\uc815\uc0c1 \ud638\ucd9c, \uac80\uc0c9 \uacb0\uacfc \uc5c6\uc74c \/ Error-\ud638\ucd9c \uc624\ub958\n  \"data\": {\n    \"current_page\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ubc88\ud638\n    \"data\": [\n      {\n        \"id\": 1, \/\/ \uacf5\uc9c0\uc0ac\ud56d ID\n        \"title\": \"New Announcement\", \/\/ \uacf5\uc9c0\uc0ac\ud56d \uc81c\ubaa9\n        \"is_featured\": true, \/\/ \uba54\uc778 \ud398\uc774\uc9c0 \ud45c\ucd9c \uc5ec\ubd80 (true-Y \/ false-N)\n        \"created_at_formatted\": \"2024.07.31\" \/\/ \uc791\uc131\uc77c, \ud615\uc2dd: \"Y.m.d\"\n      }\n    ],\n    \"first_page_url\": \"http:\/\/127.0.0.1:8000\/api\/announcement?page=1\", \/\/ \uccab \ud398\uc774\uc9c0 URL\n    \"from\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0\uc758 \uccab \ubc88\uc9f8 \ud56d\ubaa9 \ubc88\ud638\n    \"last_page\": 1, \/\/ \ucd1d \ud398\uc774\uc9c0 \uc218\n    \"last_page_url\": \"http:\/\/127.0.0.1:8000\/api\/announcement?page=1\", \/\/ \ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0 URL\n    \"links\": [\n      {\n        \"url\": null, \/\/ \uc774\uc804 \ud398\uc774\uc9c0 URL, \uc774\uc804 \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n        \"label\": \"&laquo; Previous\", \/\/ \uc774\uc804 \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": false \/\/ \uc774\uc804 \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      },\n      {\n        \"url\": \"http:\/\/127.0.0.1:8000\/api\/announcement?page=1\", \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 URL\n        \"label\": \"1\", \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": true \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      },\n      {\n        \"url\": null, \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 URL, \ub2e4\uc74c \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n        \"label\": \"Next &raquo;\", \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": false \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      }\n    ],\n    \"next_page_url\": null, \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 URL\n    \"path\": \"http:\/\/127.0.0.1:8000\/api\/announcement\", \/\/ API \uae30\ubcf8 URL\n    \"per_page\": 10, \/\/ \ud398\uc774\uc9c0\ub2f9 \ud56d\ubaa9 \uc218\n    \"prev_page_url\": null, \/\/ \uc774\uc804 \ud398\uc774\uc9c0 URL, \uc774\uc804 \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n    \"to\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0\uc758 \ub9c8\uc9c0\ub9c9 \ud56d\ubaa9 \ubc88\ud638\n    \"total\": 1, \/\/ \ucd1d \ud56d\ubaa9 \uc218\n    \"search\": \"\" \/\/ \uc81c\ubaa9 \uac80\uc0c9\uc5b4, \uac80\uc0c9\uc5b4\uac00 \uc5c6\uc73c\uba74 \ube48 \ubb38\uc790\uc5f4\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "POST api\/inquiry",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/inquiry",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/inquiry"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"minima\",\"contact\":\"eum\",\"inquiry_category\":\"labore\",\"email\":\"cyril.sipes@example.com\",\"message\":\"repellat\",\"agreement\":false}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Questions",
+            "description": "",
+            "item": [
+                {
+                    "name": "Retrieve a list of questions.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/question",
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "",
+                                    "description": "\uac80\uc0c9\ud560 \uc9c8\ubb38\uc758 \uc81c\ubaa9\uc785\ub2c8\ub2e4. \uac80\uc0c9\uc744 \ud558\uc9c0 \uc54a\uc744 \uacbd\uc6b0 \ube48\uac12( \"\"||null)\uc744 \uc785\ub825\ud569\ub2c8\ub2e4.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "",
+                                    "description": "\ud398\uc774\uc9c0 \ubc88\ud638\uc785\ub2c8\ub2e4. \uae30\ubcf8\uac12\uc740 null\uc785\ub2c8\ub2e4.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/question?search=&page="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\uc790\uc8fc\ubb3b\ub294 \uc9c8\ubb38 \ubaa9\ub85d\uc744 \uac00\uc838\uc635\ub2c8\ub2e4. \uac01 \uc9c8\ubb38\uc740 ID, \uc81c\ubaa9, \ub0b4\uc6a9\uc774 \ud3ec\ud568\ub429\ub2c8\ub2e4.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true, \/\/ true-\uc815\uc0c1 \ud638\ucd9c \/ false-\ud638\ucd9c \uc624\ub958\n  \"message\": \"Success\", \/\/ Success-\uc815\uc0c1 \ud638\ucd9c \/ \uac8c\uc2dc\ubb3c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.-\uc815\uc0c1 \ud638\ucd9c, \ub370\uc774\ud130 \uc5c6\uc74c \/ \uac80\uc0c9 \uacb0\uacfc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uac80\uc0c9\uc5b4:-\uc815\uc0c1 \ud638\ucd9c, \uac80\uc0c9 \uacb0\uacfc \uc5c6\uc74c \/ Error-\ud638\ucd9c \uc624\ub958\n  \"data\": {\n    \"current_page\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ubc88\ud638\n    \"data\": [\n      {\n        \"id\": 1, \/\/ \uc9c8\ubb38 ID\n        \"title\": \"\uc81c\ubaa9\", \/\/ \uc9c8\ubb38 \uc81c\ubaa9\n        \"content\": \"\ub0b4\uc6a9\" \/\/ \uc9c8\ubb38 \ub0b4\uc6a9\n      }\n    ],\n    \"first_page_url\": \"http:\/\/127.0.0.1:8000\/api\/question?page=1\", \/\/ \uccab \ud398\uc774\uc9c0 URL\n    \"from\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0\uc758 \uccab \ubc88\uc9f8 \ud56d\ubaa9 \ubc88\ud638\n    \"last_page\": 1, \/\/ \ucd1d \ud398\uc774\uc9c0 \uc218\n    \"last_page_url\": \"http:\/\/127.0.0.1:8000\/api\/question?page=1\", \/\/ \ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0 URL\n    \"links\": [\n      {\n        \"url\": null, \/\/ \uc774\uc804 \ud398\uc774\uc9c0 URL, \uc774\uc804 \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n        \"label\": \"&laquo; Previous\", \/\/ \uc774\uc804 \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": false \/\/ \uc774\uc804 \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      },\n      {\n        \"url\": \"http:\/\/127.0.0.1:8000\/api\/question?page=1\", \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 URL\n        \"label\": \"1\", \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": true \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      },\n      {\n        \"url\": null, \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 URL, \ub2e4\uc74c \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n        \"label\": \"Next &raquo;\", \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": false \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      }\n    ],\n    \"next_page_url\": null, \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 URL\n    \"path\": \"http:\/\/127.0.0.1:8000\/api\/question\", \/\/ API \uae30\ubcf8 URL\n    \"per_page\": 10, \/\/ \ud398\uc774\uc9c0\ub2f9 \ud56d\ubaa9 \uc218\n    \"prev_page_url\": null, \/\/ \uc774\uc804 \ud398\uc774\uc9c0 URL, \uc774\uc804 \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n    \"to\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0\uc758 \ub9c8\uc9c0\ub9c9 \ud56d\ubaa9 \ubc88\ud638\n    \"total\": 1, \/\/ \ucd1d \ud56d\ubaa9 \uc218\n    \"search\": \"\" \/\/ \uc81c\ubaa9 \uac80\uc0c9\uc5b4, \uac80\uc0c9\uc5b4\uac00 \uc5c6\uc73c\uba74 \ube48 \ubb38\uc790\uc5f4\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Reviews",
+            "description": "",
+            "item": [
+                {
+                    "name": "Retrieve a list of reviews.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/review",
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "",
+                                    "description": "\uac80\uc0c9\ud560 \ud6c4\uae30\uc758 \uc81c\ubaa9\uc785\ub2c8\ub2e4. \uac80\uc0c9\uc744 \ud558\uc9c0 \uc54a\uc744 \uacbd\uc6b0 \ube48\uac12( \"\"||null)\uc744 \uc785\ub825\ud569\ub2c8\ub2e4.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "",
+                                    "description": "\ud398\uc774\uc9c0 \ubc88\ud638\uc785\ub2c8\ub2e4. \uae30\ubcf8\uac12\uc740 null\uc785\ub2c8\ub2e4.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/review?search=&page="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\uace0\uac1d\ud6c4\uae30 \ubaa9\ub85d\uc744 \uac00\uc838\uc635\ub2c8\ub2e4. \uac01 \ud6c4\uae30\ub294 ID, \uc774\ubbf8\uc9c0, \ud544\ud130 \uce74\ud14c\uace0\ub9ac, \ud544\ud130 \uc9c0\uc5ed, \uc81c\ubaa9, \ub0b4\uc6a9\uc774 \ud3ec\ud568\ub429\ub2c8\ub2e4.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true, \/\/ true-\uc815\uc0c1 \ud638\ucd9c \/ false-\ud638\ucd9c \uc624\ub958\n  \"message\": \"Success\", \/\/ Success-\uc815\uc0c1 \ud638\ucd9c \/ \uac8c\uc2dc\ubb3c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.-\uc815\uc0c1 \ud638\ucd9c, \ub370\uc774\ud130 \uc5c6\uc74c \/ \uac80\uc0c9 \uacb0\uacfc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uac80\uc0c9\uc5b4:-\uc815\uc0c1 \ud638\ucd9c, \uac80\uc0c9 \uacb0\uacfc \uc5c6\uc74c \/ Error-\ud638\ucd9c \uc624\ub958\n  \"data\": {\n    \"current_page\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ubc88\ud638\n    \"data\": [\n      {\n        \"id\": 1, \/\/ \ud6c4\uae30 ID\n        \"image\": \"http:\/\/127.0.0.1:8000\/storage\/images\/\uc6d0\ubcf8.jfif\", \/\/ \ud6c4\uae30 \ub300\ud45c\uc0ac\uc9c4 URL\n        \"filter_category\": \"\uc6d0\uc2a4\ud1b1 \ud1a0\ud0c8\uc11c\ube44\uc2a4\", \/\/ \ud544\ud130 \uc720\ud615: \uc804\uccb4 \uc815\ub9ac\uc218\ub0a9\/\ubd80\ubd84 \uc815\ub9ac\uc218\ub0a9\/\uc6d0\uc2a4\ud1b1 \ud1a0\ud0c8\uc11c\ube44\uc2a4\n        \"filter_area\": \"50\ud3c9\ub300 \uc774\uc0c1\", \/\/ \ud544\ud130 \ud3c9\uc218: \uc6d0\ub8f8\/10\ud3c9\ub300\/20\ud3c9\ub300\/30\ud3c9\ub300\/40\ud3c9\ub300\/50\ud3c9\ub300 \uc774\uc0c1\n        \"title\": \"\uc81c\ubaa9\", \/\/ \ud6c4\uae30 \uc81c\ubaa9\n        \"content\": \"\ub0b4\uc6a9\" \/\/ \ud6c4\uae30 \ub0b4\uc6a9\n      }\n    ],\n    \"first_page_url\": \"http:\/\/127.0.0.1:8000\/api\/review?page=1\", \/\/ \uccab \ud398\uc774\uc9c0 URL\n    \"from\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0\uc758 \uccab \ubc88\uc9f8 \ud56d\ubaa9 \ubc88\ud638\n    \"last_page\": 1, \/\/ \ucd1d \ud398\uc774\uc9c0 \uc218\n    \"last_page_url\": \"http:\/\/127.0.0.1:8000\/api\/review?page=1\", \/\/ \ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0 URL\n    \"links\": [\n      {\n        \"url\": null, \/\/ \uc774\uc804 \ud398\uc774\uc9c0 URL, \uc774\uc804 \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n        \"label\": \"&laquo; Previous\", \/\/ \uc774\uc804 \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": false \/\/ \uc774\uc804 \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      },\n      {\n        \"url\": \"http:\/\/127.0.0.1:8000\/api\/review?page=1\", \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 URL\n        \"label\": \"1\", \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": true \/\/ \ud604\uc7ac \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      },\n      {\n        \"url\": null, \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 URL, \ub2e4\uc74c \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n        \"label\": \"Next &raquo;\", \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 \ub9c1\ud06c \ub808\uc774\ube14\n        \"active\": false \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 \ub9c1\ud06c \ud65c\uc131\ud654 \uc5ec\ubd80\n      }\n    ],\n    \"next_page_url\": null, \/\/ \ub2e4\uc74c \ud398\uc774\uc9c0 URL\n    \"path\": \"http:\/\/127.0.0.1:8000\/api\/review\", \/\/ API \uae30\ubcf8 URL\n    \"per_page\": 10, \/\/ \ud398\uc774\uc9c0\ub2f9 \ud56d\ubaa9 \uc218\n    \"prev_page_url\": null, \/\/ \uc774\uc804 \ud398\uc774\uc9c0 URL, \uc774\uc804 \ud398\uc774\uc9c0\uac00 \uc5c6\uc73c\uba74 null\n    \"to\": 1, \/\/ \ud604\uc7ac \ud398\uc774\uc9c0\uc758 \ub9c8\uc9c0\ub9c9 \ud56d\ubaa9 \ubc88\ud638\n    \"total\": 1, \/\/ \ucd1d \ud56d\ubaa9 \uc218\n    \"search\": \"\" \/\/ \uc81c\ubaa9 \uac80\uc0c9\uc5b4, \uac80\uc0c9\uc5b4\uac00 \uc5c6\uc73c\uba74 \ube48 \ubb38\uc790\uc5f4\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

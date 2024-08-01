@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>공간정원 API Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.37.1.js"></script>
+
+    <script src="../docs/js/theme-default-4.37.1.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-announcements" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="announcements">
+                    <a href="#announcements">Announcements</a>
+                </li>
+                                    <ul id="tocify-subheader-announcements" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="announcements-GETapi-announcement">
+                                <a href="#announcements-GETapi-announcement">Retrieve a list of announcements.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-inquiry">
+                                <a href="#endpoints-POSTapi-inquiry">POST api/inquiry</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-questions" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="questions">
+                    <a href="#questions">Questions</a>
+                </li>
+                                    <ul id="tocify-subheader-questions" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="questions-GETapi-question">
+                                <a href="#questions-GETapi-question">Retrieve a list of questions.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-reviews" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="reviews">
+                    <a href="#reviews">Reviews</a>
+                </li>
+                                    <ul id="tocify-subheader-reviews" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="reviews-GETapi-review">
+                                <a href="#reviews-GETapi-review">Retrieve a list of reviews.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: August 1, 2024</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://localhost</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="announcements">Announcements</h1>
+
+    
+
+                                <h2 id="announcements-GETapi-announcement">Retrieve a list of announcements.</h2>
+
+<p>
+</p>
+
+<p>공지사항 목록을 가져옵니다. 각 게시물은 ID, 제목, 메인 표출 여부, 생성 날짜를 포함합니다.</p>
+
+<span id="example-requests-GETapi-announcement">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/announcement?search=&amp;page=" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/announcement"
+);
+
+const params = {
+    "search": "",
+    "page": "",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-announcement">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;success&quot;: true, // true-정상 호출 / false-호출 오류
+  &quot;message&quot;: &quot;Success&quot;, // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류
+  &quot;data&quot;: {
+    &quot;current_page&quot;: 1, // 현재 페이지 번호
+    &quot;data&quot;: [
+      {
+        &quot;id&quot;: 1, // 공지사항 ID
+        &quot;title&quot;: &quot;New Announcement&quot;, // 공지사항 제목
+        &quot;is_featured&quot;: true, // 메인 페이지 표출 여부 (true-Y / false-N)
+        &quot;created_at_formatted&quot;: &quot;2024.07.31&quot; // 작성일, 형식: &quot;Y.m.d&quot;
+      }
+    ],
+    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/announcement?page=1&quot;, // 첫 페이지 URL
+    &quot;from&quot;: 1, // 현재 페이지의 첫 번째 항목 번호
+    &quot;last_page&quot;: 1, // 총 페이지 수
+    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/announcement?page=1&quot;, // 마지막 페이지 URL
+    &quot;links&quot;: [
+      {
+        &quot;url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
+        &quot;label&quot;: &quot;&amp;laquo; Previous&quot;, // 이전 페이지 링크 레이블
+        &quot;active&quot;: false // 이전 페이지 링크 활성화 여부
+      },
+      {
+        &quot;url&quot;: &quot;http://127.0.0.1:8000/api/announcement?page=1&quot;, // 현재 페이지 URL
+        &quot;label&quot;: &quot;1&quot;, // 현재 페이지 링크 레이블
+        &quot;active&quot;: true // 현재 페이지 링크 활성화 여부
+      },
+      {
+        &quot;url&quot;: null, // 다음 페이지 URL, 다음 페이지가 없으면 null
+        &quot;label&quot;: &quot;Next &amp;raquo;&quot;, // 다음 페이지 링크 레이블
+        &quot;active&quot;: false // 다음 페이지 링크 활성화 여부
+      }
+    ],
+    &quot;next_page_url&quot;: null, // 다음 페이지 URL
+    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/announcement&quot;, // API 기본 URL
+    &quot;per_page&quot;: 10, // 페이지당 항목 수
+    &quot;prev_page_url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
+    &quot;to&quot;: 1, // 현재 페이지의 마지막 항목 번호
+    &quot;total&quot;: 1, // 총 항목 수
+    &quot;search&quot;: &quot;&quot; // 제목 검색어, 검색어가 없으면 빈 문자열
+  }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-announcement" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-announcement"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-announcement"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-announcement" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-announcement">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-announcement" data-method="GET"
+      data-path="api/announcement"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-announcement', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-announcement"
+                    onclick="tryItOut('GETapi-announcement');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-announcement"
+                    onclick="cancelTryOut('GETapi-announcement');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-announcement"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/announcement</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-announcement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-announcement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-announcement"
+               value=""
+               data-component="query">
+    <br>
+<p>검색할 게시물의 제목입니다. 검색을 하지 않을 경우 빈값( &quot;&quot;||null)을 입력합니다.</p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-announcement"
+               value=""
+               data-component="query">
+    <br>
+<p>페이지 번호입니다. 기본값은 null입니다.</p>
+            </div>
+                </form>
+
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-POSTapi-inquiry">POST api/inquiry</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-inquiry">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/inquiry" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"minima\",
+    \"contact\": \"eum\",
+    \"inquiry_category\": \"labore\",
+    \"email\": \"cyril.sipes@example.com\",
+    \"message\": \"repellat\",
+    \"agreement\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/inquiry"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "minima",
+    "contact": "eum",
+    "inquiry_category": "labore",
+    "email": "cyril.sipes@example.com",
+    "message": "repellat",
+    "agreement": false
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-inquiry">
+</span>
+<span id="execution-results-POSTapi-inquiry" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-inquiry"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-inquiry"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-inquiry" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-inquiry">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-inquiry" data-method="POST"
+      data-path="api/inquiry"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-inquiry', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-inquiry"
+                    onclick="tryItOut('POSTapi-inquiry');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-inquiry"
+                    onclick="cancelTryOut('POSTapi-inquiry');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-inquiry"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/inquiry</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-inquiry"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-inquiry"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-inquiry"
+               value="minima"
+               data-component="body">
+    <br>
+<p>Example: <code>minima</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="contact"                data-endpoint="POSTapi-inquiry"
+               value="eum"
+               data-component="body">
+    <br>
+<p>Example: <code>eum</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>inquiry_category</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="inquiry_category"                data-endpoint="POSTapi-inquiry"
+               value="labore"
+               data-component="body">
+    <br>
+<p>Example: <code>labore</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-inquiry"
+               value="cyril.sipes@example.com"
+               data-component="body">
+    <br>
+<p>Example: <code>cyril.sipes@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="message"                data-endpoint="POSTapi-inquiry"
+               value="repellat"
+               data-component="body">
+    <br>
+<p>Example: <code>repellat</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>agreement</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+                <label data-endpoint="POSTapi-inquiry" style="display: none">
+            <input type="radio" name="agreement"
+                   value="true"
+                   data-endpoint="POSTapi-inquiry"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-inquiry" style="display: none">
+            <input type="radio" name="agreement"
+                   value="false"
+                   data-endpoint="POSTapi-inquiry"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+        </form>
+
+                <h1 id="questions">Questions</h1>
+
+    
+
+                                <h2 id="questions-GETapi-question">Retrieve a list of questions.</h2>
+
+<p>
+</p>
+
+<p>자주묻는 질문 목록을 가져옵니다. 각 질문은 ID, 제목, 내용이 포함됩니다.</p>
+
+<span id="example-requests-GETapi-question">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/question?search=&amp;page=" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/question"
+);
+
+const params = {
+    "search": "",
+    "page": "",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-question">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;success&quot;: true, // true-정상 호출 / false-호출 오류
+  &quot;message&quot;: &quot;Success&quot;, // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류
+  &quot;data&quot;: {
+    &quot;current_page&quot;: 1, // 현재 페이지 번호
+    &quot;data&quot;: [
+      {
+        &quot;id&quot;: 1, // 질문 ID
+        &quot;title&quot;: &quot;제목&quot;, // 질문 제목
+        &quot;content&quot;: &quot;내용&quot; // 질문 내용
+      }
+    ],
+    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/question?page=1&quot;, // 첫 페이지 URL
+    &quot;from&quot;: 1, // 현재 페이지의 첫 번째 항목 번호
+    &quot;last_page&quot;: 1, // 총 페이지 수
+    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/question?page=1&quot;, // 마지막 페이지 URL
+    &quot;links&quot;: [
+      {
+        &quot;url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
+        &quot;label&quot;: &quot;&amp;laquo; Previous&quot;, // 이전 페이지 링크 레이블
+        &quot;active&quot;: false // 이전 페이지 링크 활성화 여부
+      },
+      {
+        &quot;url&quot;: &quot;http://127.0.0.1:8000/api/question?page=1&quot;, // 현재 페이지 URL
+        &quot;label&quot;: &quot;1&quot;, // 현재 페이지 링크 레이블
+        &quot;active&quot;: true // 현재 페이지 링크 활성화 여부
+      },
+      {
+        &quot;url&quot;: null, // 다음 페이지 URL, 다음 페이지가 없으면 null
+        &quot;label&quot;: &quot;Next &amp;raquo;&quot;, // 다음 페이지 링크 레이블
+        &quot;active&quot;: false // 다음 페이지 링크 활성화 여부
+      }
+    ],
+    &quot;next_page_url&quot;: null, // 다음 페이지 URL
+    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/question&quot;, // API 기본 URL
+    &quot;per_page&quot;: 10, // 페이지당 항목 수
+    &quot;prev_page_url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
+    &quot;to&quot;: 1, // 현재 페이지의 마지막 항목 번호
+    &quot;total&quot;: 1, // 총 항목 수
+    &quot;search&quot;: &quot;&quot; // 제목 검색어, 검색어가 없으면 빈 문자열
+  }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-question" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-question"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-question"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-question" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-question">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-question" data-method="GET"
+      data-path="api/question"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-question', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-question"
+                    onclick="tryItOut('GETapi-question');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-question"
+                    onclick="cancelTryOut('GETapi-question');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-question"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/question</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-question"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-question"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-question"
+               value=""
+               data-component="query">
+    <br>
+<p>검색할 질문의 제목입니다. 검색을 하지 않을 경우 빈값( &quot;&quot;||null)을 입력합니다.</p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-question"
+               value=""
+               data-component="query">
+    <br>
+<p>페이지 번호입니다. 기본값은 null입니다.</p>
+            </div>
+                </form>
+
+                <h1 id="reviews">Reviews</h1>
+
+    
+
+                                <h2 id="reviews-GETapi-review">Retrieve a list of reviews.</h2>
+
+<p>
+</p>
+
+<p>고객후기 목록을 가져옵니다. 각 후기는 ID, 이미지, 필터 카테고리, 필터 지역, 제목, 내용이 포함됩니다.</p>
+
+<span id="example-requests-GETapi-review">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/review?search=&amp;page=" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/review"
+);
+
+const params = {
+    "search": "",
+    "page": "",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-review">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;success&quot;: true, // true-정상 호출 / false-호출 오류
+  &quot;message&quot;: &quot;Success&quot;, // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류
+  &quot;data&quot;: {
+    &quot;current_page&quot;: 1, // 현재 페이지 번호
+    &quot;data&quot;: [
+      {
+        &quot;id&quot;: 1, // 후기 ID
+        &quot;image&quot;: &quot;http://127.0.0.1:8000/storage/images/원본.jfif&quot;, // 후기 대표사진 URL
+        &quot;filter_category&quot;: &quot;원스톱 토탈서비스&quot;, // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
+        &quot;filter_area&quot;: &quot;50평대 이상&quot;, // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
+        &quot;title&quot;: &quot;제목&quot;, // 후기 제목
+        &quot;content&quot;: &quot;내용&quot; // 후기 내용
+      }
+    ],
+    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/review?page=1&quot;, // 첫 페이지 URL
+    &quot;from&quot;: 1, // 현재 페이지의 첫 번째 항목 번호
+    &quot;last_page&quot;: 1, // 총 페이지 수
+    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/review?page=1&quot;, // 마지막 페이지 URL
+    &quot;links&quot;: [
+      {
+        &quot;url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
+        &quot;label&quot;: &quot;&amp;laquo; Previous&quot;, // 이전 페이지 링크 레이블
+        &quot;active&quot;: false // 이전 페이지 링크 활성화 여부
+      },
+      {
+        &quot;url&quot;: &quot;http://127.0.0.1:8000/api/review?page=1&quot;, // 현재 페이지 URL
+        &quot;label&quot;: &quot;1&quot;, // 현재 페이지 링크 레이블
+        &quot;active&quot;: true // 현재 페이지 링크 활성화 여부
+      },
+      {
+        &quot;url&quot;: null, // 다음 페이지 URL, 다음 페이지가 없으면 null
+        &quot;label&quot;: &quot;Next &amp;raquo;&quot;, // 다음 페이지 링크 레이블
+        &quot;active&quot;: false // 다음 페이지 링크 활성화 여부
+      }
+    ],
+    &quot;next_page_url&quot;: null, // 다음 페이지 URL
+    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/review&quot;, // API 기본 URL
+    &quot;per_page&quot;: 10, // 페이지당 항목 수
+    &quot;prev_page_url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
+    &quot;to&quot;: 1, // 현재 페이지의 마지막 항목 번호
+    &quot;total&quot;: 1, // 총 항목 수
+    &quot;search&quot;: &quot;&quot; // 제목 검색어, 검색어가 없으면 빈 문자열
+  }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-review" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-review"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-review"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-review" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-review">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-review" data-method="GET"
+      data-path="api/review"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-review', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-review"
+                    onclick="tryItOut('GETapi-review');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-review"
+                    onclick="cancelTryOut('GETapi-review');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-review"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/review</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-review"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-review"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-review"
+               value=""
+               data-component="query">
+    <br>
+<p>검색할 후기의 제목입니다. 검색을 하지 않을 경우 빈값( &quot;&quot;||null)을 입력합니다.</p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-review"
+               value=""
+               data-component="query">
+    <br>
+<p>페이지 번호입니다. 기본값은 null입니다.</p>
+            </div>
+                </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>
