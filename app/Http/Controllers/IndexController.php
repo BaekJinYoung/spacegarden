@@ -46,7 +46,7 @@ class IndexController extends Controller
      *         "mobile_image_type": 1 // 모바일 이미지 타입 (0: 이미지, 1: 비디오)
      *       }
      *     ],
-     *     "youtube": [
+     *     "youtube": [ // 최대 9개 노출
      *       {
      *         "id": 1, // 유튜브 ID
      *         "title": "메인 노출", // 제목
@@ -54,7 +54,7 @@ class IndexController extends Controller
      *         "video_id": "ncNL6tP_dsI" // 유튜브 비디오 ID
      *       }
      *     ],
-     *     "reviews": [
+     *     "reviews": [ // 최대 9개 노출
      *       {
      *         "id": 1, // 고객후기 ID
      *         "title": "메인 화면 노출", // 제목
