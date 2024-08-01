@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Storage;
 class DetailController extends Controller
 {
     /**
-     * Retrieve the detailed announcement information for a given announcement ID.
+     * 공지사항 상세 페이지
      *
      * 주어진 공지사항 ID에 대한 상세 정보를 반환합니다.
      *
      * @group Announcements
-     * @queryParam id required integer 공지사항 ID. Example: 2
+     * @queryParam id required 공지사항 ID. Example: null
      *
      * @response 200 {
      *   "success": true, // true-정상 호출 / false-호출 오류
@@ -44,12 +44,12 @@ class DetailController extends Controller
     }
 
     /**
-     * Retrieve the detailed review information for a given review ID.
+     * 고객 후기 상세 페이지
      *
      * 주어진 고객후기 ID에 대한 상세 정보를 반환합니다.
      *
-     * @group Review
-     * @queryParam id required integer 고객후기 ID. Example: 4
+     * @group Reviews
+     * @queryParam id required 고객후기 ID. Example: null
      *
      * @response 200 {
      *   "success": true, // true-정상 호출 / false-호출 오류

@@ -16,7 +16,7 @@ use Illuminate\Support\Carbon;
 class IndexController extends Controller
 {
     /**
-     * Retrieve the main response data including popups, banners, YouTube videos, and reviews.
+     * 메인 페이지
      *
      * 팝업, 배너, 유튜브, 고객 후기를 포함한 메인 페이지 데이터를 가져옵니다.
      *
@@ -140,7 +140,7 @@ class IndexController extends Controller
     }
 
     /**
-     * Retrieve a list of announcements.
+     * 공지사항 목록
      *
      * 공지사항 목록을 가져옵니다. 각 게시물은 ID, 제목, 메인 표출 여부, 생성 날짜를 포함합니다.
      *
@@ -199,7 +199,7 @@ class IndexController extends Controller
     }
 
     /**
-     * Retrieve a list of questions.
+     * 자주묻는 질문 목록
      *
      * 자주묻는 질문 목록을 가져옵니다. 각 질문은 ID, 제목, 내용이 포함됩니다.
      *
@@ -257,7 +257,7 @@ class IndexController extends Controller
     }
 
     /**
-     * Retrieve a list of reviews.
+     * 고객후기 목록
      *
      * 고객후기 목록을 가져옵니다. 각 후기는 ID, 이미지, 필터 카테고리, 필터 지역, 제목, 내용이 포함됩니다.
      *
