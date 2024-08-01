@@ -26,7 +26,7 @@ class IndexController extends Controller
      *   "success": true, // true-정상 호출 / false-호출 오류
      *   "message": "Success", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류
      *   "data": {
-     *     "popup": [
+     *     "popup": [ // 데이터가 없을 시 null
      *       {
      *         "id": 3, // 팝업 ID
      *         "title": "팝업 링크", // 팝업 제목
@@ -34,7 +34,7 @@ class IndexController extends Controller
      *         "link": "https://www.youtube.com/" // 팝업 링크, 데이터가 없을 시 null
      *       }
      *     ],
-     *     "banner": [
+     *     "banner": [ // 데이터가 없을 시 null
      *       {
      *         "id": 2, // 배너 ID
      *         "title": "영상 테스트", // 배너 제목
@@ -46,7 +46,7 @@ class IndexController extends Controller
      *         "mobile_image_type": 1 // 모바일 이미지 타입 (0: 이미지, 1: 비디오)
      *       }
      *     ],
-     *     "youtube": [ // 최대 9개 노출
+     *     "youtube": [ // 최대 9개 노출, 데이터가 없을 시 null
      *       {
      *         "id": 1, // 유튜브 ID
      *         "title": "메인 노출", // 제목
@@ -54,7 +54,7 @@ class IndexController extends Controller
      *         "video_id": "ncNL6tP_dsI" // 유튜브 비디오 ID
      *       }
      *     ],
-     *     "reviews": [ // 최대 9개 노출
+     *     "reviews": [ // 최대 9개 노출, 데이터가 없을 시 null
      *       {
      *         "id": 1, // 고객후기 ID
      *         "title": "메인 화면 노출", // 제목

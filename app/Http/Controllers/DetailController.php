@@ -11,9 +11,68 @@ use Illuminate\Support\Facades\Storage;
 
 class DetailController extends Controller
 {
+    /**
+     * Retrieve the detailed announcement information for a given announcement ID.
+     *
+     * 주어진 공지사항 ID에 대한 상세 정보를 반환합니다.
+     *
+     * @group Announcements
+     * @queryParam id required integer 공지사항 ID. Example: 2
+     *
+     * @response 200 {
+     *   "success": true, // true-정상 호출 / false-호출 오류
+     *   "message": "Success", // Success-정상 호출 / Error-호출 오류
+     *   "data": {
+     *     "id": 2, // 공지사항 ID
+     *     "title": "제목", // 제목
+     *     "created_at_formatted": "2024-08-01", // 작성일, Y-m-d 형식
+     *     "views": 1, // 조회수
+     *     "content": "내용", // 내용
+     *     "file_name": "TEST_모바일.jpg", // 첨부파일 파일명
+     *     "file": "http://43.201.247.176/storage/uploads/TEST_모바일.jpg", // 첨부파일 URL
+     *     "prev": { // 이전 공지사항 정보, 이전 데이터가 없을 시 null
+     *       "id": 1, // 이전 공지사항의 ID
+     *       "title": "제목" // 이전 공지사항 제목
+     *     },
+     *     "next": null // 다음 공지사항 정보, 다음 데이터가 없을 시 null
+     *   }
+     * }
+     */
+
     public function announcement_detail($id) {
         return $this->detailRespond(Announcement::class, ['id', 'title', 'views', 'content', 'file', 'created_at'], $id, true, true);
     }
+
+    /**
+     * Retrieve the detailed review information for a given review ID.
+     *
+     * 주어진 고객후기 ID에 대한 상세 정보를 반환합니다.
+     *
+     * @group Review
+     * @queryParam id required integer 고객후기 ID. Example: 4
+     *
+     * @response 200 {
+     *   "success": true, // true-정상 호출 / false-호출 오류
+     *   "message": "Success", // Success-정상 호출 / Error-호출 오류
+     *   "data": {
+     *     "id": 4, // 고객후기 ID
+     *     "title": "제목", // 제목
+     *     "created_at_formatted": "2024-08-01", // 작성일, 형식: "Y-m-d"
+     *     "views": 2, // 조회수
+     *     "filter_category": "부분 정리수납", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
+     *     "filter_area": "원룸", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
+     *     "content": "내용", // 내용
+     *     "image": "http://43.201.247.176/storage/images/TEST_모바일.jpg", // 대표사진 URL
+     *     "file_name": "TEST_모바일.jpg", // 첨부파일 파일명
+     *     "file": "http://43.201.247.176/storage/uploads/TEST_모바일.jpg", // 첨부파일 URL
+     *     "prev": { // 이전 후기 정보, 이전 데이터가 없을 시 null
+     *       "id": 3, // 이전 후기 ID
+     *       "title": "제목" // 이전 후기 제목
+     *     },
+     *     "next": null // 다음 후기 정보, 다음 데이터가 없을 시 null
+     *   }
+     * }
+     */
 
     public function review_detail($id) {
         return $this->detailRespond(Review::class, ['id', 'title', 'filter_category', 'filter_area', 'image', 'views', 'content', 'file', 'created_at'], $id, true, true);
