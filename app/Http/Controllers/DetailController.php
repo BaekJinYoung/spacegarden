@@ -29,7 +29,7 @@ class DetailController extends Controller
      *     "views": 1, // 조회수
      *     "content": "내용", // 내용
      *     "file_name": "TEST_모바일.jpg", // 첨부파일 파일명
-     *     "file": "http://43.201.247.176/storage/uploads/TEST_모바일.jpg", // 첨부파일 URL
+     *     "file": "http://54.180.236.140/storage/uploads/TEST_모바일.jpg", // 첨부파일 URL
      *     "prev": { // 이전 공지사항 정보, 이전 데이터가 없을 시 null
      *       "id": 1, // 이전 공지사항의 ID
      *       "title": "제목" // 이전 공지사항 제목
@@ -62,9 +62,9 @@ class DetailController extends Controller
      *     "filter_category": "부분 정리수납", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
      *     "filter_area": "원룸", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
      *     "content": "내용", // 내용
-     *     "image": "http://43.201.247.176/storage/images/TEST_모바일.jpg", // 대표사진 URL
+     *     "image": "http://54.180.236.140/storage/images/TEST_모바일.jpg", // 대표사진 URL
      *     "file_name": "TEST_모바일.jpg", // 첨부파일 파일명
-     *     "file": "http://43.201.247.176/storage/uploads/TEST_모바일.jpg", // 첨부파일 URL
+     *     "file": "http://54.180.236.140/storage/uploads/TEST_모바일.jpg", // 첨부파일 URL
      *     "prev": { // 이전 후기 정보, 이전 데이터가 없을 시 null
      *       "id": 3, // 이전 후기 ID
      *       "title": "제목" // 이전 후기 제목

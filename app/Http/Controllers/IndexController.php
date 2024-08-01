@@ -30,7 +30,7 @@ class IndexController extends Controller
      *       {
      *         "id": 3, // 팝업 ID
      *         "title": "팝업 링크", // 팝업 제목
-     *         "image": "http://43.201.247.176/storage/images/TEST_모바일.jpg", // 이미지 URL
+     *         "image": "http://54.180.236.140/storage/images/TEST_모바일.jpg", // 이미지 URL
      *         "link": "https://www.youtube.com/" // 팝업 링크, 데이터가 없을 시 null
      *       }
      *     ],
@@ -39,8 +39,8 @@ class IndexController extends Controller
      *         "id": 2, // 배너 ID
      *         "title": "영상 테스트", // 배너 제목
      *         "subTitle": "소제목", // 배너 소제목
-     *         "image": "http://43.201.247.176/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4", // 사진 혹은 동영상 URL
-     *         "mobile_image": "http://43.201.247.176/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4", // 모바일 사진 혹은 동영상 URL
+     *         "image": "http://54.180.236.140/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4", // 사진 혹은 동영상 URL
+     *         "mobile_image": "http://54.180.236.140/storage/images/대패삼겹살 덮밥 -- 부타동 -- 덮밥 레시피 -- 대패삼겹살 요리.mp4", // 모바일 사진 혹은 동영상 URL
      *         "link": "https://www.youtube.com/", // 배너 링크
      *         "image_type": 1, // 이미지 타입 (0: 이미지, 1: 비디오)
      *         "mobile_image_type": 1 // 모바일 이미지 타입 (0: 이미지, 1: 비디오)
@@ -162,10 +162,10 @@ class IndexController extends Controller
      *         "created_at_formatted": "2024.07.31" // 작성일, 형식: "Y.m.d"
      *       }
      *     ],
-     *     "first_page_url": "http://43.201.247.176/api/announcement?page=1", // 첫 페이지 URL
+     *     "first_page_url": "http://54.180.236.140/api/announcement?page=1", // 첫 페이지 URL
      *     "from": 1, // 현재 페이지의 첫 번째 항목 번호
      *     "last_page": 1, // 총 페이지 수
-     *     "last_page_url": "http://43.201.247.176/api/announcement?page=1", // 마지막 페이지 URL
+     *     "last_page_url": "http://54.180.236.140/api/announcement?page=1", // 마지막 페이지 URL
      *     "links": [
      *       {
      *         "url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
@@ -173,7 +173,7 @@ class IndexController extends Controller
      *         "active": false // 이전 페이지 링크 활성화 여부
      *       },
      *       {
-     *         "url": "http://43.201.247.176/api/announcement?page=1", // 현재 페이지 URL
+     *         "url": "http://54.180.236.140/api/announcement?page=1", // 현재 페이지 URL
      *         "label": "1", // 현재 페이지 링크 레이블
      *         "active": true // 현재 페이지 링크 활성화 여부
      *       },
@@ -184,7 +184,7 @@ class IndexController extends Controller
      *       }
      *     ],
      *     "next_page_url": null, // 다음 페이지 URL
-     *     "path": "http://43.201.247.176/api/announcement", // API 기본 URL
+     *     "path": "http://54.180.236.140/api/announcement", // API 기본 URL
      *     "per_page": 10, // 페이지당 항목 수
      *     "prev_page_url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
      *     "to": 1, // 현재 페이지의 마지막 항목 번호
@@ -220,10 +220,10 @@ class IndexController extends Controller
      *         "content": "내용" // 질문 내용
      *       }
      *     ],
-     *     "first_page_url": "http://43.201.247.176/api/question?page=1", // 첫 페이지 URL
+     *     "first_page_url": "http://54.180.236.140/api/question?page=1", // 첫 페이지 URL
      *     "from": 1, // 현재 페이지의 첫 번째 항목 번호
      *     "last_page": 1, // 총 페이지 수
-     *     "last_page_url": "http://43.201.247.176/api/question?page=1", // 마지막 페이지 URL
+     *     "last_page_url": "http://54.180.236.140/api/question?page=1", // 마지막 페이지 URL
      *     "links": [
      *       {
      *         "url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
@@ -231,7 +231,7 @@ class IndexController extends Controller
      *         "active": false // 이전 페이지 링크 활성화 여부
      *       },
      *       {
-     *         "url": "http://43.201.247.176/api/question?page=1", // 현재 페이지 URL
+     *         "url": "http://54.180.236.140/api/question?page=1", // 현재 페이지 URL
      *         "label": "1", // 현재 페이지 링크 레이블
      *         "active": true // 현재 페이지 링크 활성화 여부
      *       },
@@ -242,7 +242,7 @@ class IndexController extends Controller
      *       }
      *     ],
      *     "next_page_url": null, // 다음 페이지 URL
-     *     "path": "http://43.201.247.176/api/question", // API 기본 URL
+     *     "path": "http://54.180.236.140/api/question", // API 기본 URL
      *     "per_page": 10, // 페이지당 항목 수
      *     "prev_page_url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
      *     "to": 1, // 현재 페이지의 마지막 항목 번호
@@ -274,17 +274,17 @@ class IndexController extends Controller
      *     "data": [
      *       {
      *         "id": 1, // 후기 ID
-     *         "image": "http://43.201.247.176/storage/images/원본.jfif", // 후기 대표사진 URL
+     *         "image": "http://54.180.236.140/storage/images/원본.jfif", // 후기 대표사진 URL
      *         "filter_category": "원스톱 토탈서비스", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
      *         "filter_area": "50평대 이상", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
      *         "title": "제목", // 후기 제목
      *         "content": "내용" // 후기 내용
      *       }
      *     ],
-     *     "first_page_url": "http://43.201.247.176/api/review?page=1", // 첫 페이지 URL
+     *     "first_page_url": "http://54.180.236.140/api/review?page=1", // 첫 페이지 URL
      *     "from": 1, // 현재 페이지의 첫 번째 항목 번호
      *     "last_page": 1, // 총 페이지 수
-     *     "last_page_url": "http://43.201.247.176/api/review?page=1", // 마지막 페이지 URL
+     *     "last_page_url": "http://54.180.236.140/api/review?page=1", // 마지막 페이지 URL
      *     "links": [
      *       {
      *         "url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
@@ -292,7 +292,7 @@ class IndexController extends Controller
      *         "active": false // 이전 페이지 링크 활성화 여부
      *       },
      *       {
-     *         "url": "http://43.201.247.176/api/review?page=1", // 현재 페이지 URL
+     *         "url": "http://54.180.236.140/api/review?page=1", // 현재 페이지 URL
      *         "label": "1", // 현재 페이지 링크 레이블
      *         "active": true // 현재 페이지 링크 활성화 여부
      *       },
@@ -303,7 +303,7 @@ class IndexController extends Controller
      *       }
      *     ],
      *     "next_page_url": null, // 다음 페이지 URL
-     *     "path": "http://43.201.247.176/api/review", // API 기본 URL
+     *     "path": "http://54.180.236.140/api/review", // API 기본 URL
      *     "per_page": 10, // 페이지당 항목 수
      *     "prev_page_url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
      *     "to": 1, // 현재 페이지의 마지막 항목 번호
