@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'http://localhost'
+    url: localhost
 paths:
   /api/announcement:
     get:
@@ -40,19 +40,33 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"current_page\": 1, // 현재 페이지 번호\n    \"data\": [\n      {\n        \"id\": 1, // 공지사항 ID\n        \"title\": \"New Announcement\", // 공지사항 제목\n        \"is_featured\": true, // 메인 페이지 표출 여부 (true-Y / false-N)\n        \"created_at_formatted\": \"2024.07.31\" // 작성일, 형식: \"Y.m.d\"\n      }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/announcement?page=1\", // 첫 페이지 URL\n    \"from\": 1, // 현재 페이지의 첫 번째 항목 번호\n    \"last_page\": 1, // 총 페이지 수\n    \"last_page_url\": \"http://127.0.0.1:8000/api/announcement?page=1\", // 마지막 페이지 URL\n    \"links\": [\n      {\n        \"url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n        \"label\": \"&laquo; Previous\", // 이전 페이지 링크 레이블\n        \"active\": false // 이전 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": \"http://127.0.0.1:8000/api/announcement?page=1\", // 현재 페이지 URL\n        \"label\": \"1\", // 현재 페이지 링크 레이블\n        \"active\": true // 현재 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": null, // 다음 페이지 URL, 다음 페이지가 없으면 null\n        \"label\": \"Next &raquo;\", // 다음 페이지 링크 레이블\n        \"active\": false // 다음 페이지 링크 활성화 여부\n      }\n    ],\n    \"next_page_url\": null, // 다음 페이지 URL\n    \"path\": \"http://127.0.0.1:8000/api/announcement\", // API 기본 URL\n    \"per_page\": 10, // 페이지당 항목 수\n    \"prev_page_url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n    \"to\": 1, // 현재 페이지의 마지막 항목 번호\n    \"total\": 1, // 총 항목 수\n    \"search\": \"\" // 제목 검색어, 검색어가 없으면 빈 문자열\n  }\n}"
+                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"current_page\": 1, // 현재 페이지 번호\n    \"data\": [\n      {\n        \"id\": 1, // 공지사항 ID\n        \"title\": \"New Announcement\", // 공지사항 제목\n        \"is_featured\": true, // 메인 페이지 표출 여부 (true-Y / false-N)\n        \"created_at_formatted\": \"2024.07.31\" // 작성일, 형식: \"Y.m.d\"\n      }\n    ],\n    \"first_page_url\": \"http://43.201.247.176/api/announcement?page=1\", // 첫 페이지 URL\n    \"from\": 1, // 현재 페이지의 첫 번째 항목 번호\n    \"last_page\": 1, // 총 페이지 수\n    \"last_page_url\": \"http://43.201.247.176/api/announcement?page=1\", // 마지막 페이지 URL\n    \"links\": [\n      {\n        \"url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n        \"label\": \"&laquo; Previous\", // 이전 페이지 링크 레이블\n        \"active\": false // 이전 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": \"http://43.201.247.176/api/announcement?page=1\", // 현재 페이지 URL\n        \"label\": \"1\", // 현재 페이지 링크 레이블\n        \"active\": true // 현재 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": null, // 다음 페이지 URL, 다음 페이지가 없으면 null\n        \"label\": \"Next &raquo;\", // 다음 페이지 링크 레이블\n        \"active\": false // 다음 페이지 링크 활성화 여부\n      }\n    ],\n    \"next_page_url\": null, // 다음 페이지 URL\n    \"path\": \"http://43.201.247.176/api/announcement\", // API 기본 URL\n    \"per_page\": 10, // 페이지당 항목 수\n    \"prev_page_url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n    \"to\": 1, // 현재 페이지의 마지막 항목 번호\n    \"total\": 1, // 총 항목 수\n    \"search\": \"\" // 제목 검색어, 검색어가 없으면 빈 문자열\n  }\n}"
       tags:
         - Announcements
       security: []
   /api/inquiry:
     post:
-      summary: ''
-      operationId: postApiInquiry
-      description: ''
+      summary: 'Store a new inquiry.'
+      operationId: storeANewInquiry
+      description: "사용자로부터 받은 문의 정보를 데이터베이스에 저장합니다.\n저장이 완료된 후, 저장된 데이터와 함께 성공 응답을 반환합니다."
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"success\": true, // 요청이 성공적으로 처리되었음을 나타냅니다.\n    \"message\": \"Success\", // 요청이 성공적으로 처리되었음을 나타냅니다.\n    \"data\": {\n        \"name\": \"이름\", // 이름\n        \"contact\": \"010-1234-5678\", // 연락처\n        \"inquiry_category\": \"문의 유형\", // 문의 유형\n        \"email\": \"admin@email.com\", // 이메일\n        \"message\": \"문의 내용\", // 문의 내용\n        \"agreement\": true // 개인정보 제공 동의 여부 (true/false)\n    }\n}"
+        400:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"success\": false, // 요청이 실패했음을 나타냅니다.\n    \"message\": \"Validation Error\", // 유효성 검사 오류 메시지\n    \"errors\": { // 실패한 유효성 검사 항목과 오류 메시지\n       // 작성 중\n    }\n}"
       tags:
-        - Endpoints
+        - Inquiries
       requestBody:
         required: true
         content:
@@ -62,32 +76,31 @@ paths:
               properties:
                 name:
                   type: string
-                  description: ''
-                  example: minima
+                  description: 이름.
+                  example: null
                 contact:
                   type: string
-                  description: ''
-                  example: eum
+                  description: 연락처.
+                  example: null
                 inquiry_category:
                   type: string
-                  description: ''
-                  example: labore
+                  description: '문의 유형.'
+                  example: null
                 email:
                   type: string
-                  description: ''
-                  example: cyril.sipes@example.com
+                  description: 이메일.
+                  example: null
                 message:
                   type: string
-                  description: ''
-                  example: repellat
+                  description: '문의 내용.'
+                  example: null
                 agreement:
                   type: boolean
-                  description: ''
-                  example: false
+                  description: '개인정보 제공 동의 여부.'
+                  example: null
               required:
                 - name
                 - contact
-                - message
                 - agreement
       security: []
   /api/question:
@@ -123,7 +136,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"current_page\": 1, // 현재 페이지 번호\n    \"data\": [\n      {\n        \"id\": 1, // 질문 ID\n        \"title\": \"제목\", // 질문 제목\n        \"content\": \"내용\" // 질문 내용\n      }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/question?page=1\", // 첫 페이지 URL\n    \"from\": 1, // 현재 페이지의 첫 번째 항목 번호\n    \"last_page\": 1, // 총 페이지 수\n    \"last_page_url\": \"http://127.0.0.1:8000/api/question?page=1\", // 마지막 페이지 URL\n    \"links\": [\n      {\n        \"url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n        \"label\": \"&laquo; Previous\", // 이전 페이지 링크 레이블\n        \"active\": false // 이전 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": \"http://127.0.0.1:8000/api/question?page=1\", // 현재 페이지 URL\n        \"label\": \"1\", // 현재 페이지 링크 레이블\n        \"active\": true // 현재 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": null, // 다음 페이지 URL, 다음 페이지가 없으면 null\n        \"label\": \"Next &raquo;\", // 다음 페이지 링크 레이블\n        \"active\": false // 다음 페이지 링크 활성화 여부\n      }\n    ],\n    \"next_page_url\": null, // 다음 페이지 URL\n    \"path\": \"http://127.0.0.1:8000/api/question\", // API 기본 URL\n    \"per_page\": 10, // 페이지당 항목 수\n    \"prev_page_url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n    \"to\": 1, // 현재 페이지의 마지막 항목 번호\n    \"total\": 1, // 총 항목 수\n    \"search\": \"\" // 제목 검색어, 검색어가 없으면 빈 문자열\n  }\n}"
+                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"current_page\": 1, // 현재 페이지 번호\n    \"data\": [\n      {\n        \"id\": 1, // 질문 ID\n        \"title\": \"제목\", // 질문 제목\n        \"content\": \"내용\" // 질문 내용\n      }\n    ],\n    \"first_page_url\": \"http://43.201.247.176/api/question?page=1\", // 첫 페이지 URL\n    \"from\": 1, // 현재 페이지의 첫 번째 항목 번호\n    \"last_page\": 1, // 총 페이지 수\n    \"last_page_url\": \"http://43.201.247.176/api/question?page=1\", // 마지막 페이지 URL\n    \"links\": [\n      {\n        \"url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n        \"label\": \"&laquo; Previous\", // 이전 페이지 링크 레이블\n        \"active\": false // 이전 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": \"http://43.201.247.176/api/question?page=1\", // 현재 페이지 URL\n        \"label\": \"1\", // 현재 페이지 링크 레이블\n        \"active\": true // 현재 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": null, // 다음 페이지 URL, 다음 페이지가 없으면 null\n        \"label\": \"Next &raquo;\", // 다음 페이지 링크 레이블\n        \"active\": false // 다음 페이지 링크 활성화 여부\n      }\n    ],\n    \"next_page_url\": null, // 다음 페이지 URL\n    \"path\": \"http://43.201.247.176/api/question\", // API 기본 URL\n    \"per_page\": 10, // 페이지당 항목 수\n    \"prev_page_url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n    \"to\": 1, // 현재 페이지의 마지막 항목 번호\n    \"total\": 1, // 총 항목 수\n    \"search\": \"\" // 제목 검색어, 검색어가 없으면 빈 문자열\n  }\n}"
       tags:
         - Questions
       security: []
@@ -160,7 +173,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"current_page\": 1, // 현재 페이지 번호\n    \"data\": [\n      {\n        \"id\": 1, // 후기 ID\n        \"image\": \"http://127.0.0.1:8000/storage/images/원본.jfif\", // 후기 대표사진 URL\n        \"filter_category\": \"원스톱 토탈서비스\", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스\n        \"filter_area\": \"50평대 이상\", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상\n        \"title\": \"제목\", // 후기 제목\n        \"content\": \"내용\" // 후기 내용\n      }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/review?page=1\", // 첫 페이지 URL\n    \"from\": 1, // 현재 페이지의 첫 번째 항목 번호\n    \"last_page\": 1, // 총 페이지 수\n    \"last_page_url\": \"http://127.0.0.1:8000/api/review?page=1\", // 마지막 페이지 URL\n    \"links\": [\n      {\n        \"url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n        \"label\": \"&laquo; Previous\", // 이전 페이지 링크 레이블\n        \"active\": false // 이전 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": \"http://127.0.0.1:8000/api/review?page=1\", // 현재 페이지 URL\n        \"label\": \"1\", // 현재 페이지 링크 레이블\n        \"active\": true // 현재 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": null, // 다음 페이지 URL, 다음 페이지가 없으면 null\n        \"label\": \"Next &raquo;\", // 다음 페이지 링크 레이블\n        \"active\": false // 다음 페이지 링크 활성화 여부\n      }\n    ],\n    \"next_page_url\": null, // 다음 페이지 URL\n    \"path\": \"http://127.0.0.1:8000/api/review\", // API 기본 URL\n    \"per_page\": 10, // 페이지당 항목 수\n    \"prev_page_url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n    \"to\": 1, // 현재 페이지의 마지막 항목 번호\n    \"total\": 1, // 총 항목 수\n    \"search\": \"\" // 제목 검색어, 검색어가 없으면 빈 문자열\n  }\n}"
+                example: "{\n  \"success\": true, // true-정상 호출 / false-호출 오류\n  \"message\": \"Success\", // Success-정상 호출 / 게시물이 없습니다.-정상 호출, 데이터 없음 / 검색 결과가 없습니다. 검색어:-정상 호출, 검색 결과 없음 / Error-호출 오류\n  \"data\": {\n    \"current_page\": 1, // 현재 페이지 번호\n    \"data\": [\n      {\n        \"id\": 1, // 후기 ID\n        \"image\": \"http://43.201.247.176/storage/images/원본.jfif\", // 후기 대표사진 URL\n        \"filter_category\": \"원스톱 토탈서비스\", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스\n        \"filter_area\": \"50평대 이상\", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상\n        \"title\": \"제목\", // 후기 제목\n        \"content\": \"내용\" // 후기 내용\n      }\n    ],\n    \"first_page_url\": \"http://43.201.247.176/api/review?page=1\", // 첫 페이지 URL\n    \"from\": 1, // 현재 페이지의 첫 번째 항목 번호\n    \"last_page\": 1, // 총 페이지 수\n    \"last_page_url\": \"http://43.201.247.176/api/review?page=1\", // 마지막 페이지 URL\n    \"links\": [\n      {\n        \"url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n        \"label\": \"&laquo; Previous\", // 이전 페이지 링크 레이블\n        \"active\": false // 이전 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": \"http://43.201.247.176/api/review?page=1\", // 현재 페이지 URL\n        \"label\": \"1\", // 현재 페이지 링크 레이블\n        \"active\": true // 현재 페이지 링크 활성화 여부\n      },\n      {\n        \"url\": null, // 다음 페이지 URL, 다음 페이지가 없으면 null\n        \"label\": \"Next &raquo;\", // 다음 페이지 링크 레이블\n        \"active\": false // 다음 페이지 링크 활성화 여부\n      }\n    ],\n    \"next_page_url\": null, // 다음 페이지 URL\n    \"path\": \"http://43.201.247.176/api/review\", // API 기본 URL\n    \"per_page\": 10, // 페이지당 항목 수\n    \"prev_page_url\": null, // 이전 페이지 URL, 이전 페이지가 없으면 null\n    \"to\": 1, // 현재 페이지의 마지막 항목 번호\n    \"total\": 1, // 총 항목 수\n    \"search\": \"\" // 제목 검색어, 검색어가 없으면 빈 문자열\n  }\n}"
       tags:
         - Reviews
       security: []
@@ -169,7 +182,7 @@ tags:
     name: Announcements
     description: ''
   -
-    name: Endpoints
+    name: Inquiries
     description: ''
   -
     name: Questions

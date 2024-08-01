@@ -11,7 +11,7 @@ return [
 
     // The base URL displayed in the docs. If this is empty, Scribe will use the value of config('app.url') at generation time.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
-    'base_url' => env('API_BASE_URL', 'http://43.201.247.176'),
+    'base_url' => 'localhost',
 
     'routes' => [
         [
@@ -123,10 +123,38 @@ return [
 
     // Text to place in the "Introduction" section, right after the `description`. Markdown and HTML are supported.
     'intro_text' => <<<INTRO
-This documentation aims to provide all the information you need to work with our API.
+공간정원
 
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<aside>
+<table>
+
+                    <thead>
+                    <tr>
+                        <th>API 종류</th>
+                        <th>설명</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>Announcements</td>
+                                <td>공지사항 목록</td>
+                            </tr>
+                            <tr>
+                                <td>Inquiries</td>
+                                <td>문의하기</td>
+                            </tr>
+                            <tr>
+                                <td>Questions</td>
+                                <td>자주묻는 질문 목록</td>
+                            </tr>
+                            <tr>
+                                <td>Reviews</td>
+                                <td>고객후기 목록</td>
+                            </tr>
+
+                    </tbody>
+                </table>
+    </aside>
 INTRO
     ,
 

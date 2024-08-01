@@ -1,13 +1,41 @@
-# Introduction
+# 공간정원 API Documentation
 
 
 
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>localhost</code>
 </aside>
 
-This documentation aims to provide all the information you need to work with our API.
+공간정원
 
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<aside>
+<table>
+
+                    <thead>
+                    <tr>
+                        <th>API 종류</th>
+                        <th>설명</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>Announcements</td>
+                                <td>공지사항 목록</td>
+                            </tr>
+                            <tr>
+                                <td>Inquiries</td>
+                                <td>문의하기</td>
+                            </tr>
+                            <tr>
+                                <td>Questions</td>
+                                <td>자주묻는 질문 목록</td>
+                            </tr>
+                            <tr>
+                                <td>Reviews</td>
+                                <td>고객후기 목록</td>
+                            </tr>
+
+                    </tbody>
+                </table>
+    </aside>
 

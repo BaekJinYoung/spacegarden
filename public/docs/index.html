@@ -56,9 +56,9 @@
     </div>
 
     <div id="toc">
-                    <ul id="tocify-header-introduction" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="introduction">
-                    <a href="#introduction">Introduction</a>
+                    <ul id="tocify-header-api-documentation" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="api-documentation">
+                    <a href="#api-documentation">공간정원 API Documentation</a>
                 </li>
                             </ul>
                     <ul id="tocify-header-authenticating-requests" class="tocify-header">
@@ -76,13 +76,13 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-inquiries" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="inquiries">
+                    <a href="#inquiries">Inquiries</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-inquiry">
-                                <a href="#endpoints-POSTapi-inquiry">POST api/inquiry</a>
+                                    <ul id="tocify-subheader-inquiries" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="inquiries-POSTapi-inquiry">
+                                <a href="#inquiries-POSTapi-inquiry">Store a new inquiry.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -122,13 +122,41 @@
 <div class="page-wrapper">
     <div class="dark-box"></div>
     <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="api-documentation">공간정원 API Documentation</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>localhost</code>
 </aside>
-<p>This documentation aims to provide all the information you need to work with our API.</p>
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<p>공간정원</p>
+<aside>
+<table>
+
+                    <thead>
+                    <tr>
+                        <th>API 종류</th>
+                        <th>설명</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>Announcements</td>
+                                <td>공지사항 목록</td>
+                            </tr>
+                            <tr>
+                                <td>Inquiries</td>
+                                <td>문의하기</td>
+                            </tr>
+                            <tr>
+                                <td>Questions</td>
+                                <td>자주묻는 질문 목록</td>
+                            </tr>
+                            <tr>
+                                <td>Reviews</td>
+                                <td>고객후기 목록</td>
+                            </tr>
+
+                    </tbody>
+                </table>
+    </aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
@@ -150,14 +178,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/announcement?search=&amp;page=" \
+    --get "localhost/api/announcement?search=&amp;page=" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/announcement"
+    "localhost/api/announcement"
 );
 
 const params = {
@@ -198,10 +226,10 @@ fetch(url, {
         &quot;created_at_formatted&quot;: &quot;2024.07.31&quot; // 작성일, 형식: &quot;Y.m.d&quot;
       }
     ],
-    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/announcement?page=1&quot;, // 첫 페이지 URL
+    &quot;first_page_url&quot;: &quot;http://43.201.247.176/api/announcement?page=1&quot;, // 첫 페이지 URL
     &quot;from&quot;: 1, // 현재 페이지의 첫 번째 항목 번호
     &quot;last_page&quot;: 1, // 총 페이지 수
-    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/announcement?page=1&quot;, // 마지막 페이지 URL
+    &quot;last_page_url&quot;: &quot;http://43.201.247.176/api/announcement?page=1&quot;, // 마지막 페이지 URL
     &quot;links&quot;: [
       {
         &quot;url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
@@ -209,7 +237,7 @@ fetch(url, {
         &quot;active&quot;: false // 이전 페이지 링크 활성화 여부
       },
       {
-        &quot;url&quot;: &quot;http://127.0.0.1:8000/api/announcement?page=1&quot;, // 현재 페이지 URL
+        &quot;url&quot;: &quot;http://43.201.247.176/api/announcement?page=1&quot;, // 현재 페이지 URL
         &quot;label&quot;: &quot;1&quot;, // 현재 페이지 링크 레이블
         &quot;active&quot;: true // 현재 페이지 링크 활성화 여부
       },
@@ -220,7 +248,7 @@ fetch(url, {
       }
     ],
     &quot;next_page_url&quot;: null, // 다음 페이지 URL
-    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/announcement&quot;, // API 기본 URL
+    &quot;path&quot;: &quot;http://43.201.247.176/api/announcement&quot;, // API 기본 URL
     &quot;per_page&quot;: 10, // 페이지당 항목 수
     &quot;prev_page_url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
     &quot;to&quot;: 1, // 현재 페이지의 마지막 항목 번호
@@ -324,16 +352,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                <h1 id="endpoints">Endpoints</h1>
+                <h1 id="inquiries">Inquiries</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-inquiry">POST api/inquiry</h2>
+                                <h2 id="inquiries-POSTapi-inquiry">Store a new inquiry.</h2>
 
 <p>
 </p>
 
-
+<p>사용자로부터 받은 문의 정보를 데이터베이스에 저장합니다.
+저장이 완료된 후, 저장된 데이터와 함께 성공 응답을 반환합니다.</p>
 
 <span id="example-requests-POSTapi-inquiry">
 <blockquote>Example request:</blockquote>
@@ -341,23 +370,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/inquiry" \
+    "localhost/api/inquiry" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"minima\",
-    \"contact\": \"eum\",
-    \"inquiry_category\": \"labore\",
-    \"email\": \"cyril.sipes@example.com\",
-    \"message\": \"repellat\",
-    \"agreement\": false
+    \"name\": null,
+    \"contact\": null,
+    \"inquiry_category\": null,
+    \"email\": null,
+    \"message\": null,
+    \"agreement\": null
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/inquiry"
+    "localhost/api/inquiry"
 );
 
 const headers = {
@@ -366,12 +395,12 @@ const headers = {
 };
 
 let body = {
-    "name": "minima",
-    "contact": "eum",
-    "inquiry_category": "labore",
-    "email": "cyril.sipes@example.com",
-    "message": "repellat",
-    "agreement": false
+    "name": null,
+    "contact": null,
+    "inquiry_category": null,
+    "email": null,
+    "message": null,
+    "agreement": null
 };
 
 fetch(url, {
@@ -383,7 +412,38 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-inquiry">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true, // 요청이 성공적으로 처리되었음을 나타냅니다.
+    &quot;message&quot;: &quot;Success&quot;, // 요청이 성공적으로 처리되었음을 나타냅니다.
+    &quot;data&quot;: {
+        &quot;name&quot;: &quot;이름&quot;, // 이름
+        &quot;contact&quot;: &quot;010-1234-5678&quot;, // 연락처
+        &quot;inquiry_category&quot;: &quot;문의 유형&quot;, // 문의 유형
+        &quot;email&quot;: &quot;admin@email.com&quot;, // 이메일
+        &quot;message&quot;: &quot;문의 내용&quot;, // 문의 내용
+        &quot;agreement&quot;: true // 개인정보 제공 동의 여부 (true/false)
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false, // 요청이 실패했음을 나타냅니다.
+    &quot;message&quot;: &quot;Validation Error&quot;, // 유효성 검사 오류 메시지
+    &quot;errors&quot;: { // 실패한 유효성 검사 항목과 오류 메시지
+       // 작성 중
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-inquiry" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-inquiry"></span>:
@@ -460,10 +520,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-inquiry"
-               value="minima"
+               value=""
                data-component="body">
     <br>
-<p>Example: <code>minima</code></p>
+<p>이름.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact</code></b>&nbsp;&nbsp;
@@ -471,10 +531,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact"                data-endpoint="POSTapi-inquiry"
-               value="eum"
+               value=""
                data-component="body">
     <br>
-<p>Example: <code>eum</code></p>
+<p>연락처.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>inquiry_category</code></b>&nbsp;&nbsp;
@@ -482,10 +542,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="inquiry_category"                data-endpoint="POSTapi-inquiry"
-               value="labore"
+               value=""
                data-component="body">
     <br>
-<p>Example: <code>labore</code></p>
+<p>문의 유형.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -493,21 +553,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-inquiry"
-               value="cyril.sipes@example.com"
+               value=""
                data-component="body">
     <br>
-<p>Example: <code>cyril.sipes@example.com</code></p>
+<p>이메일.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="message"                data-endpoint="POSTapi-inquiry"
-               value="repellat"
+               value=""
                data-component="body">
     <br>
-<p>Example: <code>repellat</code></p>
+<p>문의 내용.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>agreement</code></b>&nbsp;&nbsp;
@@ -528,7 +588,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>개인정보 제공 동의 여부.</p>
         </div>
         </form>
 
@@ -549,14 +609,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/question?search=&amp;page=" \
+    --get "localhost/api/question?search=&amp;page=" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/question"
+    "localhost/api/question"
 );
 
 const params = {
@@ -596,10 +656,10 @@ fetch(url, {
         &quot;content&quot;: &quot;내용&quot; // 질문 내용
       }
     ],
-    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/question?page=1&quot;, // 첫 페이지 URL
+    &quot;first_page_url&quot;: &quot;http://43.201.247.176/api/question?page=1&quot;, // 첫 페이지 URL
     &quot;from&quot;: 1, // 현재 페이지의 첫 번째 항목 번호
     &quot;last_page&quot;: 1, // 총 페이지 수
-    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/question?page=1&quot;, // 마지막 페이지 URL
+    &quot;last_page_url&quot;: &quot;http://43.201.247.176/api/question?page=1&quot;, // 마지막 페이지 URL
     &quot;links&quot;: [
       {
         &quot;url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
@@ -607,7 +667,7 @@ fetch(url, {
         &quot;active&quot;: false // 이전 페이지 링크 활성화 여부
       },
       {
-        &quot;url&quot;: &quot;http://127.0.0.1:8000/api/question?page=1&quot;, // 현재 페이지 URL
+        &quot;url&quot;: &quot;http://43.201.247.176/api/question?page=1&quot;, // 현재 페이지 URL
         &quot;label&quot;: &quot;1&quot;, // 현재 페이지 링크 레이블
         &quot;active&quot;: true // 현재 페이지 링크 활성화 여부
       },
@@ -618,7 +678,7 @@ fetch(url, {
       }
     ],
     &quot;next_page_url&quot;: null, // 다음 페이지 URL
-    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/question&quot;, // API 기본 URL
+    &quot;path&quot;: &quot;http://43.201.247.176/api/question&quot;, // API 기본 URL
     &quot;per_page&quot;: 10, // 페이지당 항목 수
     &quot;prev_page_url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
     &quot;to&quot;: 1, // 현재 페이지의 마지막 항목 번호
@@ -739,14 +799,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/review?search=&amp;page=" \
+    --get "localhost/api/review?search=&amp;page=" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/review"
+    "localhost/api/review"
 );
 
 const params = {
@@ -782,17 +842,17 @@ fetch(url, {
     &quot;data&quot;: [
       {
         &quot;id&quot;: 1, // 후기 ID
-        &quot;image&quot;: &quot;http://127.0.0.1:8000/storage/images/원본.jfif&quot;, // 후기 대표사진 URL
+        &quot;image&quot;: &quot;http://43.201.247.176/storage/images/원본.jfif&quot;, // 후기 대표사진 URL
         &quot;filter_category&quot;: &quot;원스톱 토탈서비스&quot;, // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
         &quot;filter_area&quot;: &quot;50평대 이상&quot;, // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
         &quot;title&quot;: &quot;제목&quot;, // 후기 제목
         &quot;content&quot;: &quot;내용&quot; // 후기 내용
       }
     ],
-    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/review?page=1&quot;, // 첫 페이지 URL
+    &quot;first_page_url&quot;: &quot;http://43.201.247.176/api/review?page=1&quot;, // 첫 페이지 URL
     &quot;from&quot;: 1, // 현재 페이지의 첫 번째 항목 번호
     &quot;last_page&quot;: 1, // 총 페이지 수
-    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/review?page=1&quot;, // 마지막 페이지 URL
+    &quot;last_page_url&quot;: &quot;http://43.201.247.176/api/review?page=1&quot;, // 마지막 페이지 URL
     &quot;links&quot;: [
       {
         &quot;url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
@@ -800,7 +860,7 @@ fetch(url, {
         &quot;active&quot;: false // 이전 페이지 링크 활성화 여부
       },
       {
-        &quot;url&quot;: &quot;http://127.0.0.1:8000/api/review?page=1&quot;, // 현재 페이지 URL
+        &quot;url&quot;: &quot;http://43.201.247.176/api/review?page=1&quot;, // 현재 페이지 URL
         &quot;label&quot;: &quot;1&quot;, // 현재 페이지 링크 레이블
         &quot;active&quot;: true // 현재 페이지 링크 활성화 여부
       },
@@ -811,7 +871,7 @@ fetch(url, {
       }
     ],
     &quot;next_page_url&quot;: null, // 다음 페이지 URL
-    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/review&quot;, // API 기본 URL
+    &quot;path&quot;: &quot;http://43.201.247.176/api/review&quot;, // API 기본 URL
     &quot;per_page&quot;: 10, // 페이지당 항목 수
     &quot;prev_page_url&quot;: null, // 이전 페이지 URL, 이전 페이지가 없으면 null
     &quot;to&quot;: 1, // 현재 페이지의 마지막 항목 번호

@@ -22,8 +22,8 @@ return [
                 To authenticate requests, include an **`Authorization`** header with the value **`"Bearer :placeholder"`**.
                 TEXT,
             "basic" => <<<TEXT
-                To authenticate requests, include an **`Authorization`** header in the form **`"Basic {credentials}"`**. 
-                The value of `{credentials}` should be your username/id and your password, joined with a colon (:), 
+                To authenticate requests, include an **`Authorization`** header in the form **`"Basic {credentials}"`**.
+                The value of `{credentials}` should be your username/id and your password, joined with a colon (:),
                 and then base64-encoded.
                 TEXT,
             "header" => <<<TEXT
@@ -36,8 +36,8 @@ return [
     ],
 
     "headings" => [
-        "introduction" => "Introduction",
-        "auth" => "Authenticating requests",
+        "introduction" => "공간정원 API Documentation",
+//        "auth" => "Authenticating requests",
     ],
 
     "endpoint" => [
