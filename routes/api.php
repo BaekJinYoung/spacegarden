@@ -4,6 +4,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\YoutubeController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(IndexController::class)->group(function () {
@@ -14,8 +15,10 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/inquiry', 'inquiry');
 });
 
-Route::get('/blog', [BlogController::class, 'showBlogPosts']);
+Route::get('/blog', [BlogController::class, 'getBlogPosts']);
 Route::get('/instagram', [BlogController::class, 'getInstagramPosts']);
+Route::get('/youtube', [YoutubeController::class, 'index']);
+
 
 Route::controller(DetailController::class)->group(function () {
     Route::get('/announcement/{id}', 'announcement_detail');

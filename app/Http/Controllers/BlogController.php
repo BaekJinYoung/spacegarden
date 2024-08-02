@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ApiResponse;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    function fetchNaverBlogPosts($blogId) {
+    function getBlogPosts($blogId) {
         $clientId = 'YOUR_NAVER_CLIENT_ID';  // 네이버 애플리케이션의 Client ID
         $clientSecret = 'YOUR_NAVER_CLIENT_SECRET';  // 네이버 애플리케이션의 Client Secret
 
@@ -30,19 +31,8 @@ class BlogController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        return $data['items']; // 블로그 게시물 목록
-    }
+        $posts = $data['data'];
 
-    public function showBlogPosts(Request $request)
-    {
-        $blogId = $request->input('blogId'); // 쿼리 파라미터에서 블로그 ID를 가져옵니다.
-
-        if (empty($blogId)) {
-            return response()->json(['error' => '블로그 ID를 입력해 주세요.'], 400);
-        }
-
-        $posts = $this->fetchNaverBlogPosts($blogId);
-
-        return response()->json($posts);
+        return ApiResponse::success($posts);
     }
 }
