@@ -210,7 +210,7 @@ class DetailController extends Controller
 
         $fileDetail = $modelClass::select(['file'])->findOrFail($request->input('id'));
 
-        if (!$fileDetail->file_path || !Storage::exists('public/' . $fileDetail->file)) {
+        if (!$fileDetail->file || !Storage::exists('public/' . $fileDetail->file)) {
             return ApiResponse::error('파일이 존재하지 않습니다.', 404);
         }
 
