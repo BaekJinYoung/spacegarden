@@ -15,6 +15,7 @@ Route::controller(IndexController::class)->group(function () {
 });
 
 Route::get('/blog', [BlogController::class, 'showBlogPosts']);
+Route::get('/instagram', [BlogController::class, 'getInstagramPosts']);
 
 Route::controller(DetailController::class)->group(function () {
     Route::get('/announcement/{id}', 'announcement_detail');
