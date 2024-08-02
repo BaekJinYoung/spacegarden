@@ -106,3 +106,10 @@ jobs:
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
+
+            sudo chown -R www-data:www-data /home/${{ secrets.SERVER_USER }}/laravel/storage
+            sudo chmod -R 775 /home/${{ secrets.SERVER_USER }}/laravel/storage
+            sudo chown -R www-data:www-data /home/${{ secrets.SERVER_USER }}/laravel
+            sudo chmod -R 775 /home/${{ secrets.SERVER_USER }}/laravel
+            sudo systemctl restart nginx
+

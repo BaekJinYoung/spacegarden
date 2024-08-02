@@ -203,7 +203,7 @@ class DetailController extends Controller
     {
         $request->validate([
             'id' => 'required|integer',
-            'model' => 'required|string|in:announcement,company,share'
+            'model' => 'required|string|in:announcement, review'
         ]);
 
         $modelClass = $this->getModelClass($request->input('model'));
