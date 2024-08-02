@@ -189,7 +189,6 @@ class DetailController extends Controller
      * 유효한 요청이 아니거나 파일이 존재하지 않는 경우, 오류 응답을 반환합니다.
      *
      * @group Download
-     * @param \Illuminate\Http\Request $request The incoming HTTP request instance.
      *
      * @queryParam id integer 다운로드할 게시물의 ID입니다.       Example: 2
      * @queryParam model string 다운로드할 모델의 유형입니다. 가능한 값: announcement, review       Example: announcement
@@ -209,13 +208,13 @@ class DetailController extends Controller
 
         $modelClass = $this->getModelClass($request->input('model'));
 
-        $fileDetail = $modelClass::select(['file_path'])->findOrFail($request->input('id'));
+        $fileDetail = $modelClass::select(['file'])->findOrFail($request->input('id'));
 
-        if (!$fileDetail->file_path || !Storage::exists('public/' . $fileDetail->file_path)) {
+        if (!$fileDetail->file_path || !Storage::exists('public/' . $fileDetail->file)) {
             return ApiResponse::error('파일이 존재하지 않습니다.', 404);
         }
 
-        return Storage::download('public/' . $fileDetail->file_path);
+        return Storage::download('public/' . $fileDetail->file);
     }
 
     private function getModelClass($model)
