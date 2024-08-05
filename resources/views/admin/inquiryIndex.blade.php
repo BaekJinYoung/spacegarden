@@ -37,15 +37,6 @@
                                 <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>1페이지에 20개까지</option>
                                 <option value="30" {{ $perPage == 30 ? 'selected' : '' }}>1페이지에 30개까지</option>
                             </select>
-                            <form action="" method="get">
-                                <div class="search-wrap col-group">
-                                    <input type="text" name="search" class="search-input" placeholder="제목을 입력하세요"
-                                           value="{{ old('search', $search) }}">
-                                    <button type="submit" class="search-btn">
-                                        <i class="xi-search"></i>
-                                    </button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
