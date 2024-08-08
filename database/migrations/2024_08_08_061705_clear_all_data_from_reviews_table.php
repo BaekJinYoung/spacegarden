@@ -16,7 +16,7 @@ return new class extends Migration
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         // 테이블의 모든 데이터 삭제
-        DB::table('reviews')->truncate();
+        DB::table('reviews')->delete();
 
         // 외래 키 제약 조건을 다시 활성화
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
