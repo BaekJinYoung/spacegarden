@@ -125,13 +125,13 @@
                         <div class="form-group">
                             <label for="filter">필터 선택 <span class="red">*</span> </label>
                             <select id="filter" name="filter_category" class="form-control">
-                                <option value="전체 정리수납" {{ old('filter_category', $item->filter_category) == '전체 정리수납' ? 'selected' : '' }}>
+                                <option value=0 {{ old('filter_category', $item->filter_category) == 0 ? 'selected' : '' }}>
                                     전체 정리수납
                                 </option>
-                                <option value="부분 정리수납" {{ old('filter_category', $item->filter_category) == '부분 정리수납' ? 'selected' : '' }}>
+                                <option value=1 {{ old('filter_category', $item->filter_category) == 1 ? 'selected' : '' }}>
                                     부분 정리수납
                                 </option>
-                                <option value="원스톱 토탈서비스" {{ old('filter_category', $item->filter_category) == '원스톱 토탈서비스' ? 'selected' : '' }}>
+                                <option value=2 {{ old('filter_category', $item->filter_category) == 2 ? 'selected' : '' }}>
                                     원스톱 토탈서비스
                                 </option>
                             </select>
@@ -141,22 +141,22 @@
                         <div class="form-group">
                             <label for="filter">필터 선택 <span class="red">*</span> </label>
                             <select id="filter" name="filter_area" class="form-control">
-                                <option value="원룸" {{ old('filter_area', $item->filter_area) == '원룸' ? 'selected' : '' }}>
+                                <option value=0 {{ old('filter_area', $item->filter_area) == 0 ? 'selected' : '' }}>
                                     원룸
                                 </option>
-                                <option value="10평대" {{ old('filter_area', $item->filter_area) == '10평대' ? 'selected' : '' }}>
+                                <option value=1 {{ old('filter_area', $item->filter_area) == 1 ? 'selected' : '' }}>
                                     10평대
                                 </option>
-                                <option value="20평대" {{ old('filter_area', $item->filter_area) == '20평대' ? 'selected' : '' }}>
+                                <option value=2 {{ old('filter_area', $item->filter_area) == 2 ? 'selected' : '' }}>
                                     20평대
                                 </option>
-                                <option value="30평대" {{ old('filter_area', $item->filter_area) == '30평대' ? 'selected' : '' }}>
+                                <option value=3 {{ old('filter_area', $item->filter_area) == 3 ? 'selected' : '' }}>
                                     30평대
                                 </option>
-                                <option value="40평대" {{ old('filter_area', $item->filter_area) == '40평대' ? 'selected' : '' }}>
+                                <option value=4 {{ old('filter_area', $item->filter_area) == 4 ? 'selected' : '' }}>
                                     40평대
                                 </option>
-                                <option value="50평대 이상" {{ old('filter_area', $item->filter_area) == '50평대 이상' ? 'selected' : '' }}>
+                                <option value=5 {{ old('filter_area', $item->filter_area) == 5 ? 'selected' : '' }}>
                                     50평대 이상
                                 </option>
                             </select>

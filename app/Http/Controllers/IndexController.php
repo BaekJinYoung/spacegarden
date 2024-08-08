@@ -264,8 +264,8 @@ class IndexController extends Controller
      * @group Reviews
      *
      * @queryParam search string 검색할 후기의 제목입니다. 검색을 하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
-     * @queryParam filter_category string 유형 필터입니다. 필터를 선택하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
-     * @queryParam filter_area string 평수 필터입니다. 필터를 선택하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
+     * @queryParam filter_category integer 유형 필터입니다. 기본값은 null입니다. Example: null
+     * @queryParam filter_area integer 평수 필터입니다. 기본값은 null입니다. Example: null
      * @queryParam page integer 페이지 번호입니다. 기본값은 null입니다. Example: null
      *
      * @response 200 {
@@ -277,8 +277,8 @@ class IndexController extends Controller
      *       {
      *         "id": 1, // 후기 ID
      *         "image": "http://54.180.236.140/storage/images/원본.jfif", // 후기 대표사진 URL
-     *         "filter_category": "원스톱 토탈서비스", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
-     *         "filter_area": "50평대 이상", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
+     *         "filter_category": 0, // 필터 유형 [0: 전체 정리수납 / 1: 부분 정리수납 / 2: 원스톱 토탈서비스]
+     *         "filter_area": 0, // 필터 평수 [0: 원룸 / 1: 10평대 / 2: 20평대 / 3: 30평대 / 4: 40평대 / 5: 50평대 이상]
      *         "title": "제목", // 후기 제목
      *         "content": "내용" // 후기 내용
      *       }
@@ -311,8 +311,8 @@ class IndexController extends Controller
      *     "to": 1, // 현재 페이지의 마지막 항목 번호
      *     "total": 1, // 총 항목 수
      *     "search": "", // 제목 검색어, 검색어가 없으면 빈 문자열
-     *     "filter_category": "전체 정리수납", // 유형 필터, 필터를 선택하지 않으면 빈 문자열 [전체 정리수납/부분 정리수납/원스톱 토탈서비스]
-     *     "filter_area": "" // 평수 필터, 필터를 선택하지 않으면 빈 문자열 [원룸/10평대/20평대/30평대/40평대/50평대 이상]
+     *     "filter_category": 0, // 유형 필터, 필터를 선택하지 않으면 null [0: 전체 정리수납 / 1: 부분 정리수납 / 2: 원스톱 토탈서비스]
+     *     "filter_area": null // 평수 필터, 필터를 선택하지 않으면 null [0: 원룸 / 1: 10평대 / 2: 20평대 / 3: 30평대 / 4: 40평대 / 5: 50평대 이상]
      *   }
      * }
      */
@@ -330,6 +330,18 @@ class IndexController extends Controller
         $filter_category = $request->input('filter_category', '');
         $filter_area = $request->input('filter_area', '');
 
+        if (is_numeric($filter_category)) {
+            $filter_category = (int)$filter_category;
+        } else {
+            $filter_category = null;
+        }
+
+        if (is_numeric($filter_area)) {
+            $filter_area = (int)$filter_area;
+        } else {
+            $filter_area = null;
+        }
+
         $query = $model::select($selectColumns)->orderBy('id', 'desc');
 
         if (!is_null($searchField) && !empty($search)) {
@@ -337,11 +349,11 @@ class IndexController extends Controller
         }
 
         if (!is_null($filterCategory) && !empty($filter_category)) {
-            $query->where($filterCategory, 'like', '%' . $filter_category . '%');
+            $query->where($filterCategory, $filter_category);
         }
 
         if (!is_null($filterArea) && !empty($filter_area)) {
-            $query->where($filterArea, 'like', '%' . $filter_area . '%');
+            $query->where($filterArea, $filter_area);
         }
 
         if (method_exists($model, 'scopeWithBooleanFormatted')) {

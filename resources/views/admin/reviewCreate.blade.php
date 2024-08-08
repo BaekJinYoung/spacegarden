@@ -110,9 +110,9 @@
                         <div class="form-group">
                             <label for="filter">필터 선택 <span class="red">*</span> </label>
                             <select id="filter" name="filter_category" class="form-control">
-                                <option value="전체 정리수납">전체 정리수납</option>
-                                <option value="부분 정리수납">부분 정리수납</option>
-                                <option value="원스톱 토탈서비스">원스톱 토탈서비스</option>
+                                <option value=0>전체 정리수납</option>
+                                <option value=1>부분 정리수납</option>
+                                <option value=2>원스톱 토탈서비스</option>
                             </select>
                         </div>
                     </div>
@@ -120,12 +120,12 @@
                         <div class="form-group">
                             <label for="filter">필터 선택 <span class="red">*</span> </label>
                             <select id="filter" name="filter_area" class="form-control">
-                                <option value="원룸">원룸</option>
-                                <option value="10평대">10평대</option>
-                                <option value="20평대">20평대</option>
-                                <option value="30평대">30평대</option>
-                                <option value="40평대">40평대</option>
-                                <option value="50평대 이상">50평대 이상</option>
+                                <option value=0>원룸</option>
+                                <option value=1>10평대</option>
+                                <option value=2>20평대</option>
+                                <option value=3>30평대</option>
+                                <option value=4>40평대</option>
+                                <option value=5>50평대 이상</option>
                             </select>
                         </div>
                     </div>
