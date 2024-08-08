@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->string('image')->default("images/TEST_웹.jpg");; // 대표사진(썸네일)
+            $table->string('image')->default("images/TEST_웹.jpg")->change(); // 대표사진(썸네일)
         });
     }
 
