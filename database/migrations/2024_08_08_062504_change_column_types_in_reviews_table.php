@@ -12,10 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('reviews', function (Blueprint $table) {
             DB::statement('ALTER TABLE reviews MODIFY filter_category INT NOT NULL;');
             DB::statement('ALTER TABLE reviews MODIFY filter_area INT NOT NULL;');
-        });
     }
 
     /**
