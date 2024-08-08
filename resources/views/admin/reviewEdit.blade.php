@@ -86,9 +86,9 @@
                                 파일 업로드
                             </label>
                             <div class="file-preview" id="image-preview"
-                                 @if(!$item->image) style="display: none" @endif>
+                                 @if(!$item->image || old('remove_image') == '1') style="display: none" @endif>
                                 <p class="file-name" id="image-filename">
-                                    @if($item->image)
+                                    @if($item->image && old('remove_image') != '1')
                                         {{$item->image_name}}
                                     @endif
                                 </p>
@@ -96,7 +96,7 @@
                                     <i class="xi-close"></i>
                                 </button>
                             </div>
-                            <input type="hidden" name="remove_image" id="remove_image" value="0">
+                            <input type="hidden" name="remove_image" id="remove_image" value="{{ old('remove_image', 0) }}">
                         </div>
                     </div>
                     <div class="form-item row-group">
