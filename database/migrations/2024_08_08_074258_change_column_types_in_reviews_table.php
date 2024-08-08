@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-//            $table->truncate();
-//
-            $table->Integer('filter_category')->change();
-            $table->Integer('filter_area')->change();
+            $table->string('image'); // 대표사진(썸네일)
+            $table->string('file'); // 첨부파일
         });
     }
 

@@ -123,7 +123,7 @@ class ValidationService
             'content' => 'required',
             'filter_category' => 'required',
             'filter_area' => 'required',
-            'image' => 'nullable',
+            'image' => 'required',
             'is_featured' => 'required|boolean',
             'file' => 'nullable',
         ];

@@ -75,6 +75,7 @@
                     <div class="form-item row-group">
                         <p class="item-default">
                             이미지
+                            <span class="red">*</span>
                         </p>
                         <div class="file-upload-wrap">
                             <input type='file' id='image_upload' accept="image/*" name="image" style="display: none;">
