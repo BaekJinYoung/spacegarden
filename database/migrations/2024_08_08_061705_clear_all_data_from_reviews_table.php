@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-//            $table->truncate();
-//
-//            $table->Integer('filter_category')->change();
-//            $table->Integer('filter_area')->change();
+            $table->truncate();
         });
     }
 
