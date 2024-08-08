@@ -107,6 +107,16 @@ jobs:
             php artisan route:cache
             php artisan view:cache
 
+            sudo chmod 664 composer.json
+            sudo chown $USER:$USER composer.json
+            sudo chmod -R 775 ~/laravel
+            sudo chown $USER:$USER composer.json composer.lock
+            sudo chown -R $USER:$USER ~/laravel
+
+            composer require --dev knuckleswtf/scribe
+            php artisan vendor:publish --provider="Knuckles\Scribe\ScribeServiceProvider"
+            php artisan scribe:generate
+
             sudo chown -R www-data:www-data /home/${{ secrets.SERVER_USER }}/laravel/storage
             sudo chmod -R 775 /home/${{ secrets.SERVER_USER }}/laravel/storage
             sudo chown -R www-data:www-data /home/${{ secrets.SERVER_USER }}/laravel
