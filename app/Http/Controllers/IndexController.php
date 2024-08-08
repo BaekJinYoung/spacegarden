@@ -158,7 +158,7 @@ class IndexController extends Controller
      *       {
      *         "id": 1, // 공지사항 ID
      *         "title": "New Announcement", // 공지사항 제목
-     *         "is_featured": 0, // 메인 페이지 표출 여부 (1: Y / 0: N)
+     *         "is_featured": 0, // 상단 공지 표출 여부 (1: Y / 0: N)
      *         "created_at_formatted": "2024.07.31" // 작성일, 형식: "Y.m.d"
      *       }
      *     ],
