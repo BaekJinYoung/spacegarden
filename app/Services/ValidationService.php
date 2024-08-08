@@ -128,6 +128,12 @@ class ValidationService
             'file' => 'nullable',
         ];
 
+        if ($request->input('remove_image') == 0) {
+            $rules['image'] = 'nullable';
+        } elseif ($request->input('remove_image') == 1) {
+            $rules['image'] = 'required';
+        }
+
         return $rules;
     }
 

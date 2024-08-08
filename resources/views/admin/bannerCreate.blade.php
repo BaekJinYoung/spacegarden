@@ -52,6 +52,7 @@
                             PC 사진 or 동영상
                             <span class="red">*</span>
                         </p>
+                        <input type="hidden" name="remove_image" id="remove_image" value="1">
                         <div class="file-upload-wrap">
                             <input type='file' id='image_upload' accept="image/*" name="image" style="display: none;">
                             <label for="image_upload" class="file-upload-btn">
@@ -70,6 +71,7 @@
                             모바일 사진 or 동영상
                             <span class="red">*</span>
                         </p>
+                        <input type="hidden" name="mobile_remove_image" id="mobile_remove_image" value="1">
                         <div class="file-upload-wrap">
                             <input type='file' id='mobile_image_upload' accept="image/*" name="mobile_image" style="display: none;">
                             <label for="mobile_image_upload" class="file-upload-btn">
@@ -91,6 +93,7 @@
                                placeholder="링크를 입력하세요(https:// 포함), 선택사항">
                     </div>
                 </div>
+
                 <div class="form-btn-wrap col-group">
                     <a href="{{route("admin.bannerIndex")}}" class="form-prev-btn">
                         목록으로
@@ -113,13 +116,14 @@
         if (file) {
             document.getElementById('image-preview').style.display = 'block';
             document.getElementById('image-filename').textContent = file.name;
+            document.getElementById('remove_image').value = 0;
         }
     });
 
     document.getElementById('remove-image-btn').addEventListener('click', function () {
         document.getElementById('image_upload').value = '';
         document.getElementById('image-preview').style.display = 'none';
-        document.getElementById('remove_image').value = '1';
+        document.getElementById('remove_image').value = 1;
     });
 
     document.getElementById('mobile_image_upload').addEventListener('change', function (event) {
@@ -127,13 +131,14 @@
         if (file) {
             document.getElementById('mobile_image-preview').style.display = 'block';
             document.getElementById('mobile_image-filename').textContent = file.name;
+            document.getElementById('mobile_remove_image').value = 0;
         }
     });
 
     document.getElementById('mobile_remove-image-btn').addEventListener('click', function () {
         document.getElementById('mobile_image_upload').value = '';
         document.getElementById('mobile_image-preview').style.display = 'none';
-        document.getElementById('mobile_remove_image').value = '1';
+        document.getElementById('mobile_remove_image').value = 1;
     });
 </script>
 

@@ -46,6 +46,7 @@
                             이미지
                             <span class="red">*</span>
                         </p>
+                        <input type="hidden" name="remove_image" id="remove_image" value="1">
                         <div class="file-upload-wrap">
                             <input type='file' id='image_upload' accept="image/*" name="image" style="display: none;">
                             <label for="image_upload" class="file-upload-btn">
@@ -89,13 +90,14 @@
         if (file) {
             document.getElementById('image-preview').style.display = 'block';
             document.getElementById('image-filename').textContent = file.name;
+            document.getElementById('remove_image').value = 0;
         }
     });
 
     document.getElementById('remove-image-btn').addEventListener('click', function () {
         document.getElementById('image_upload').value = '';
         document.getElementById('image-preview').style.display = 'none';
-        document.getElementById('remove_image').value = '1';
+        document.getElementById('remove_image').value = 1;
     });
 </script>
 
