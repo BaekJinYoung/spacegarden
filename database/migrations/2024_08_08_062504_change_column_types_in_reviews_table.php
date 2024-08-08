@@ -12,8 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-            DB::statement('ALTER TABLE reviews MODIFY filter_category INT NOT NULL;');
-            DB::statement('ALTER TABLE reviews MODIFY filter_area INT NOT NULL;');
+        // NULL을 허용하도록 먼저 변경
+        DB::statement('ALTER TABLE reviews MODIFY filter_category INT NULL;');
+        DB::statement('ALTER TABLE reviews MODIFY filter_area INT NULL;');
+
+        // 이후에 NOT NULL로 변경
+        DB::statement('ALTER TABLE reviews MODIFY filter_category INT NOT NULL;');
+        DB::statement('ALTER TABLE reviews MODIFY filter_area INT NOT NULL;');
     }
 
     /**
