@@ -158,7 +158,7 @@ class IndexController extends Controller
      *       {
      *         "id": 1, // 공지사항 ID
      *         "title": "New Announcement", // 공지사항 제목
-     *         "is_featured": true, // 메인 페이지 표출 여부 (true-Y / false-N)
+     *         "is_featured": 0, // 메인 페이지 표출 여부 (1: Y / 0: N)
      *         "created_at_formatted": "2024.07.31" // 작성일, 형식: "Y.m.d"
      *       }
      *     ],
@@ -264,6 +264,8 @@ class IndexController extends Controller
      * @group Reviews
      *
      * @queryParam search string 검색할 후기의 제목입니다. 검색을 하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
+     * @queryParam filter_category string 유형 필터입니다. 필터를 선택하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
+     * @queryParam filter_area string 평수 필터입니다. 필터를 선택하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
      * @queryParam page integer 페이지 번호입니다. 기본값은 null입니다. Example: null
      *
      * @response 200 {
@@ -308,25 +310,38 @@ class IndexController extends Controller
      *     "prev_page_url": null, // 이전 페이지 URL, 이전 페이지가 없으면 null
      *     "to": 1, // 현재 페이지의 마지막 항목 번호
      *     "total": 1, // 총 항목 수
-     *     "search": "" // 제목 검색어, 검색어가 없으면 빈 문자열
+     *     "search": "", // 제목 검색어, 검색어가 없으면 빈 문자열
+     *     "filter_category": "전체 정리수납", // 유형 필터, 필터를 선택하지 않으면 빈 문자열 [전체 정리수납/부분 정리수납/원스톱 토탈서비스]
+     *     "filter_area": "" // 평수 필터, 필터를 선택하지 않으면 빈 문자열 [원룸/10평대/20평대/30평대/40평대/50평대 이상]
      *   }
      * }
      */
 
     public function review(Request $request) {
-        return $this->fetchDataAndRespond(Review::class, ['id', 'image', 'filter_category', 'filter_area', 'title', 'content'], 'title', 10, $request);
+        return $this->fetchDataAndRespond(Review::class, ['id', 'image', 'filter_category', 'filter_area', 'title', 'content'], 'title', 10, $request, 'filter_category', 'filter_area');
     }
 
 //    public function sns(Request $request) {
 //        return $this->fetchDataAndRespond(Question::class, ['id', 'title', 'content'], 'title', 10, $request);
 //    }
 
-    private function fetchDataAndRespond($model, $selectColumns, $searchField, $page, Request $request) {
+    private function fetchDataAndRespond($model, $selectColumns, $searchField, $page, Request $request, $filterCategory = null, $filterArea = null) {
         $search = $request->input('search', '');
+        $filter_category = $request->input('filter_category', '');
+        $filter_area = $request->input('filter_area', '');
+
         $query = $model::select($selectColumns)->orderBy('id', 'desc');
 
         if (!is_null($searchField) && !empty($search)) {
             $query->where($searchField, 'like', '%' . $search . '%');
+        }
+
+        if (!is_null($filterCategory) && !empty($filter_category)) {
+            $query->where($filterCategory, 'like', '%' . $filter_category . '%');
+        }
+
+        if (!is_null($filterArea) && !empty($filter_area)) {
+            $query->where($filterArea, 'like', '%' . $filter_area . '%');
         }
 
         if (method_exists($model, 'scopeWithBooleanFormatted')) {
@@ -355,6 +370,14 @@ class IndexController extends Controller
         }
 
         $data['search'] = $search;
+
+        if (!empty($filterCategory)) {
+            $data['filter_category'] = $filter_category;
+        }
+
+        if (!empty($filterArea)) {
+            $data['filter_area'] = $filter_area;
+        }
 
         return ApiResponse::success($data);
     }
