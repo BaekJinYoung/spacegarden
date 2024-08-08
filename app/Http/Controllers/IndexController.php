@@ -348,12 +348,12 @@ class IndexController extends Controller
             $query->where($searchField, 'like', '%' . $search . '%');
         }
 
-        if (!is_null($filterCategory) && !empty($filter_category)) {
-            $query->where($filterCategory, $filter_category);
+        if (!is_null($filterCategory) && $filter_category !== null) {
+            $query->where($filterCategory, '=', $filter_category);
         }
 
-        if (!is_null($filterArea) && !empty($filter_area)) {
-            $query->where($filterArea, $filter_area);
+        if (!is_null($filterArea) && $filter_area !== null) {
+            $query->where($filterArea, '=', $filter_area);
         }
 
         if (method_exists($model, 'scopeWithBooleanFormatted')) {
