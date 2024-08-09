@@ -114,7 +114,9 @@ class BlogController extends Controller
             }
             return null;
         } catch (Exception $e) {
-            Log::error('Image fetch failed: ' . $e->getMessage());
+            Log::error('Image fetch failed: ' . $e->getMessage(), [
+                'iframeUrl' => $iframeUrl,
+            ]);
             return null;
         }
     }
