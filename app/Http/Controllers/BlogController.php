@@ -6,6 +6,7 @@ use App\Http\Resources\ApiResponse;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Sunra\PhpSimple\HtmlDomParser;
+use Symfony\Component\DomCrawler\Crawler;
 
 class BlogController extends Controller
 {
@@ -72,16 +73,17 @@ class BlogController extends Controller
     }
 
     private function getFirstImageUrl($url) {
-        $client = new Client();
         try {
-            $response = $client->request('GET', $url);
+            $response = $this->client->request('GET', $url, [
+                'timeout' => 10,
+            ]);
             $body = $response->getBody()->getContents();
 
-            $dom = HtmlDomParser::str_get_html($body);
-            $firstImage = $dom->find('img', 0);
+            $crawler = new Crawler($body);
+            $firstImage = $crawler->filter('img')->first();
 
-            if ($firstImage) {
-                return $firstImage->src;
+            if ($firstImage->count() > 0) {
+                return $firstImage->attr('src');
             }
         } catch (\Exception $e) {
         }
