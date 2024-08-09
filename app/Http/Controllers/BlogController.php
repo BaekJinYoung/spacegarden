@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     function getBlogPosts() {
+        $client = new Client();
+
         $clientId = 'zq6e8lRLTCQqCVh1UfGt';  // 네이버 애플리케이션의 Client ID
         $clientSecret = '9okmubdb5x';  // 네이버 애플리케이션의 Client Secret
-
-        $client = new Client();
 
         $query = 'site:blog.naver.com/niceout86';
 
