@@ -16,7 +16,7 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/inquiry', 'inquiry');
 });
 
-//Route::get('/blog', [BlogController::class, 'getBlogPosts']);
+Route::get('/blog', [BlogController::class, 'getBlogPosts']);
 Route::get('/instagram', [InstagramController::class, 'getInstagramPosts']);
 //Route::get('/youtube', [YoutubeController::class, 'index']);
 //Route::get('/redirect', [YoutubeController::class, 'index']);

@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    function getBlogPosts($blogId) {
-        $clientId = 'YOUR_NAVER_CLIENT_ID';  // 네이버 애플리케이션의 Client ID
-        $clientSecret = 'YOUR_NAVER_CLIENT_SECRET';  // 네이버 애플리케이션의 Client Secret
+    function getBlogPosts() {
+        $clientId = 'zq6e8lRLTCQqCVh1UfGt';  // 네이버 애플리케이션의 Client ID
+        $clientSecret = '9okmubdb5x';  // 네이버 애플리케이션의 Client Secret
 
         $client = new Client();
 
-        $query = 'site:blog.naver.com/' . $blogId;
+        $query = 'site:blog.naver.com/niceout86';
 
         $response = $client->request('GET', 'https://openapi.naver.com/v1/search/blog', [
             'headers' => [
