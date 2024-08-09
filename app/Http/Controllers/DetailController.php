@@ -59,8 +59,8 @@ class DetailController extends Controller
      *     "title": "제목", // 제목
      *     "created_at_formatted": "2024-08-01", // 작성일, 형식: "Y-m-d"
      *     "views": 2, // 조회수
-     *     "filter_category": "부분 정리수납", // 필터 유형: 전체 정리수납/부분 정리수납/원스톱 토탈서비스
-     *     "filter_area": "원룸", // 필터 평수: 원룸/10평대/20평대/30평대/40평대/50평대 이상
+     *     "filter_category": 1, // 필터 유형 [0: 전체 정리수납 / 1: 부분 정리수납 / 2: 원스톱 토탈서비스]
+     *     "filter_area": 0, // 필터 평수 [0: 원룸 / 1: 10평대 / 2: 20평대 / 3: 30평대 / 4: 40평대 / 5: 50평대 이상]
      *     "content": "내용", // 내용
      *     "image": "https://www.baekjinyoung.co.kr/storage/images/TEST_모바일.jpg", // 대표사진 URL
      *     "file_name": "TEST_모바일.jpg", // 첨부파일 파일명

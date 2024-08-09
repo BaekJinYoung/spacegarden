@@ -264,8 +264,8 @@ class IndexController extends Controller
      * @group Reviews
      *
      * @queryParam search string 검색할 후기의 제목입니다. 검색을 하지 않을 경우 빈값( ""||null)을 입력합니다. Example: null
-     * @queryParam filter_category integer 유형 필터입니다. 기본값은 null입니다. Example: null
-     * @queryParam filter_area integer 평수 필터입니다. 기본값은 null입니다. Example: null
+     * @queryParam filter_category integer 유형 필터입니다. 기본값은 null입니다. [0: 전체 정리수납 / 1: 부분 정리수납 / 2: 원스톱 토탈서비스] Example: null
+     * @queryParam filter_area integer 평수 필터입니다. 기본값은 null입니다. [0: 원룸 / 1: 10평대 / 2: 20평대 / 3: 30평대 / 4: 40평대 / 5: 50평대 이상] Example: null
      * @queryParam page integer 페이지 번호입니다. 기본값은 null입니다. Example: null
      *
      * @response 200 {
