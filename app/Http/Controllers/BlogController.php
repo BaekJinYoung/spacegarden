@@ -25,7 +25,7 @@ class BlogController extends Controller
                 ],
                 'query' => [
                     'query' => $keyword,
-                    'display' => 20, // 가져올 게시물 수
+                    'display' => 50, // 가져올 게시물 수
                     'start' => 1, // 시작 인덱스
                     'sort' => 'date', // 정렬 기준 (sim: 유사도, date: 날짜)
                 ],
@@ -33,6 +33,11 @@ class BlogController extends Controller
 
             $data = json_decode($response->getBody(), true);
             $posts = $data['items'];
+
+            foreach ($posts as &$post) {
+                // 이미지 정보 추가
+                $post['images'] = $this->extractImagesFromUrl($post['link']);
+            }
 
             // 결과를 배열에 추가
             $allPosts = array_merge($allPosts, $posts);
@@ -48,6 +53,25 @@ class BlogController extends Controller
         $limitedPosts = array_slice($uniquePosts, 0, 20);
 
         return ApiResponse::success(array_values($limitedPosts));
+    }
+
+    private function extractImagesFromUrl($url) {
+        $client = new Client();
+        $response = $client->request('GET', $url);
+        $html = $response->getBody()->getContents();
+
+        $dom = new \DOMDocument();
+        @$dom->loadHTML($html); // @기호로 경고를 무시합니다.
+
+        $xpath = new \DOMXPath($dom);
+        $imageNodes = $xpath->query('//img');
+
+        $images = [];
+        foreach ($imageNodes as $node) {
+            $images[] = $node->getAttribute('src');
+        }
+
+        return $images;
     }
 
     // 중복 게시물 제거 함수
