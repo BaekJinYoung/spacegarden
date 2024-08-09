@@ -23,7 +23,7 @@ class BlogController extends Controller
             ],
             'query' => [
                 'query' => $query,
-                'display' => 20, // 가져올 게시물 수
+                'display' => 40, // 가져올 게시물 수
                 'start' => 1, // 시작 인덱스
                 'sort' => 'date', // 정렬 기준 (sim: 유사도, date: 날짜)
             ],
@@ -31,8 +31,10 @@ class BlogController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        $posts = $data['items'];
+        $filteredPosts = array_filter($data['items'], function ($post) {
+            return $post['bloggerlink'] === 'blog.naver.com/niceout86';
+        });
 
-        return ApiResponse::success($posts);
+        return ApiResponse::success(array_values($filteredPosts));
     }
 }
