@@ -34,7 +34,7 @@ class InstagramController extends Controller
      *       "permalink": "https://www.instagram.com/p/C-bh0bTz1hu/", // 인스타그램 게시물 URL
      *       "media_type": "CAROUSEL_ALBUM", // 미디어 유형 (IMAGE, VIDEO, CAROUSEL_ALBUM)
      *       "media_url": "https://scontent-nrt1-2.cdninstagram.com/v/t51.29350-15/454639965_515905504308983_1690389984879416330_n.heic", // 미디어 URL
-     *       "thumbnail_url": "https://scontent-nrt1-2.cdninstagram.com/v/t51.29350-15/454724988_1035530854834035_7451642132034069594_n.jpg" // 썸네일 URL, 비디오 썸네일 URL (VIDEO에만 존재)
+     *       "thumbnail_url": "https://scontent-nrt1-2.cdninstagram.com/v/t51.29350-15/454724988_1035530854834035_7451642132034069594_n.jpg" // 비디오 썸네일 URL (VIDEO에만 존재)
      *     }
      *     }
      *   ]
@@ -47,7 +47,9 @@ class InstagramController extends Controller
 
         $instagramUserId = '8906428979373592';
 
-        $url = "https://graph.instagram.com/$instagramUserId/media?fields=id,permalink,media_type,media_url,thumbnail_url&access_token=$this->accessToken";
+        $limit = 20;
+
+        $url = "https://graph.instagram.com/$instagramUserId/media?fields=id,permalink,media_type,media_url,thumbnail_url&limit=$limit&access_token=$this->accessToken";
 
         try {
             $response = $client->request('GET', $url);
