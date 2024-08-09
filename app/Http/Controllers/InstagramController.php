@@ -21,7 +21,7 @@ class InstagramController extends Controller
 
         $instagramUserId = '8906428979373592';
 
-        $url = "https://graph.instagram.com/$instagramUserId/media?fields=permalink,media_type,media_url,thumbnail_url&access_token=$this->accessToken";
+        $url = "https://graph.instagram.com/$instagramUserId/media?fields=id,permalink,media_type,media_url,thumbnail_url&access_token=$this->accessToken";
 
         try {
             $response = $client->request('GET', $url);
