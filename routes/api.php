@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InstagramController;
+use App\Http\Controllers\SnsController;
 use App\Http\Controllers\YoutubeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,8 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/review', 'review');
     Route::get('/inquiry', 'inquiry');
 });
+
+Route::get('/sns', [SnsController::class, 'getSnsPosts']);
 
 Route::get('/blog', [BlogController::class, 'getBlogPosts']);
 Route::get('/instagram', [InstagramController::class, 'getInstagramPosts']);
