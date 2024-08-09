@@ -31,7 +31,7 @@ class BlogController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        $posts = $data['data'];
+        $posts = $data['items'];
 
         return ApiResponse::success($posts);
     }
