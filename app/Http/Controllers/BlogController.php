@@ -16,7 +16,7 @@ class BlogController extends Controller
 
         $query = 'site:blog.naver.com/niceout86';
 
-        $response = $client->request('GET', 'https://openapi.naver.com/v1/search/blog', [
+        $response = $client->request('GET', 'https://openapi.naver.com/v1/search/blog.xml', [
             'headers' => [
                 'X-Naver-Client-Id' => $clientId,
                 'X-Naver-Client-Secret' => $clientSecret,
