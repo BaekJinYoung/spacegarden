@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ApiResponse;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class BlogController extends Controller
 {
@@ -76,16 +77,13 @@ class BlogController extends Controller
             $response = $client->request('GET', $url);
             $body = $response->getBody()->getContents();
 
-            $dom = new \DOMDocument();
-            @$dom->loadHTML($body);
-            $xpath = new \DOMXPath($dom);
-            $images = $xpath->query('//img');
+            $dom = HtmlDomParser::str_get_html($body);
+            $firstImage = $dom->find('img', 0);
 
-            if ($images->length > 0) {
-                return $images->item(0)->getAttribute('src');
+            if ($firstImage) {
+                return $firstImage->src;
             }
         } catch (\Exception $e) {
-            // 예외 처리 로직 (예: 로그 기록)
         }
 
         return null;
