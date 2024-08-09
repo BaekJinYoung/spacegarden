@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ApiResponse;
 use GuzzleHttp\Client;
+use Illuminate\Http\Client\RequestException;
 
 class BlogController extends Controller
 {
@@ -26,28 +27,37 @@ class BlogController extends Controller
         $allPosts = [];
 
         foreach ($keywords as $keyword) {
-            $response = $client->request('GET', 'https://openapi.naver.com/v1/search/blog', [
-                'headers' => [
-                    'X-Naver-Client-Id' => $clientId,
-                    'X-Naver-Client-Secret' => $clientSecret,
-                ],
-                'query' => [
-                    'query' => $keyword,
-                    'display' => 50, // 가져올 게시물 수
-                    'start' => 1, // 시작 인덱스
-                    'sort' => 'date', // 정렬 기준 (sim: 유사도, date: 날짜)
-                ],
-            ]);
+            try {
+                $response = $client->request('GET', 'https://openapi.naver.com/v1/search/blog', [
+                    'headers' => [
+                        'X-Naver-Client-Id' => $clientId,
+                        'X-Naver-Client-Secret' => $clientSecret,
+                    ],
+                    'query' => [
+                        'query' => $keyword,
+                        'display' => 50, // 가져올 게시물 수
+                        'start' => 1, // 시작 인덱스
+                        'sort' => 'date', // 정렬 기준 (sim: 유사도, date: 날짜)
+                    ],
+                ]);
 
-            $data = json_decode($response->getBody(), true);
-            $posts = $data['items'];
+                $data = json_decode($response->getBody(), true);
+                $posts = $data['items'];
 
-            foreach ($posts as $post) {
-                $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+                // 각 게시물의 본문에서 이미지를 추출
+                foreach ($posts as &$post) {
+                    $post['images'] = $this->extractImagesFromBlog($post['link']);
+                }
+
+                // 결과를 배열에 추가
+                $allPosts = array_merge($allPosts, $posts);
+
+                // API 호출 사이에 지연 추가
+                sleep(1); // 1초 대기
+            } catch (RequestException $e) {
+                // 예외 처리 로직 추가 (로그 기록 등)
+                continue;
             }
-
-            // 결과를 배열에 추가
-            $allPosts = array_merge($allPosts, $posts);
         }
 
         $filteredPosts = array_filter($allPosts, function($post) {
