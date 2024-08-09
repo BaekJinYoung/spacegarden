@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ApiResponse;
 use GuzzleHttp\Client;
+use Illuminate\Support\Carbon;
 
 class BlogController extends Controller
 {
@@ -40,11 +41,17 @@ class BlogController extends Controller
             ]);
 
             $data = json_decode($response->getBody(), true);
-            $posts = $data['items'];
+            $posts = array_map(function($post) {
+                unset($post['bloggername']);
+                unset($post['bloggerlink']);
+                return $post;
+            }, $data['items']);
 
             foreach ($posts as &$post) {
                 $post['title'] = $this->removeBoldTags($post['title']);
                 $post['description'] = $this->removeBoldTags($post['description']);
+                $post['postdate_formatted'] = Carbon::parse($post['postdate'])->format('Y-m-d');
+                unset($post['postdate']);
             }
 
             $allPosts = array_merge($allPosts, $posts);
