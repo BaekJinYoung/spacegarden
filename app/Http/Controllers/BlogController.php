@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ApiResponse;
+use DOMDocument;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -55,9 +56,7 @@ class BlogController extends Controller
         // 중복 제거
         $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
 
-        foreach ($uniquePosts as &$post) {
-            $post['first_image_url'] = $this->getFirstImageUrl($post['link']);
-        }
+        $postsWithImages = $this->addFirstImageToPosts($uniquePosts);
 
         $limitedPosts = array_slice($uniquePosts, 0, 20);
 
@@ -80,30 +79,61 @@ class BlogController extends Controller
         return $unique;
     }
 
-    private function getFirstImageUrl($url) {
-        try {
-            $response = $this->client->request('GET', $url, [
-                'headers' => [
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-                ],
-                'timeout' => 10,
-            ]);
-            $body = $response->getBody()->getContents();
+    private function addFirstImageToPosts($posts)
+    {
+        $client = new Client();
 
-            Log::info('HTML Content:', ['content' => substr($body, 0, 2000)]);
-
-            $crawler = new Crawler($body);
-            $images = $crawler->filter('img');
-
-            if ($images->count() > 0) {
-                return $images->first()->attr('src');
-            }else {
-                Log::info('No images found in HTML content.');
+        foreach ($posts as &$post) {
+            $iframeUrl = $this->getIframeUrl($post['link']);
+            if ($iframeUrl) {
+                $post['firstImage'] = $this->getFirstImageFromPost($client, $iframeUrl);
+            } else {
+                $post['firstImage'] = null; // iframe URL을 찾지 못한 경우 null 리턴
             }
-        } catch (\Exception $e) {
-            Log::error('Error fetching first image URL: ' . $e->getMessage());
         }
 
-        return null;
+        return $posts;
+    }
+
+    // iframe URL을 추출하는 함수
+    private function getIframeUrl($url)
+    {
+        try {
+            // blogId와 logNo 추출
+            preg_match('/blog.naver.com\/([\w\d]+)\/(\d+)/', $url, $matches);
+            if (count($matches) == 3) {
+                $blogId = $matches[1];
+                $logNo = $matches[2];
+
+                // iframe URL 생성
+                return "https://blog.naver.com/PostView.nhn?blogId={$blogId}&logNo={$logNo}";
+            }
+
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    // 블로그 게시물에서 첫 번째 이미지 URL을 가져오는 함수
+    private function getFirstImageFromPost($client, $iframeUrl)
+    {
+        try {
+            $response = $client->request('GET', $iframeUrl);
+            $html = $response->getBody()->getContents();
+
+            $dom = new DOMDocument();
+            @$dom->loadHTML($html);
+
+            $images = $dom->getElementsByTagName('img');
+
+            if ($images->length > 0) {
+                return $images->item(0)->getAttribute('src');
+            }
+
+            return null; // 이미지가 없는 경우 null 리턴
+        } catch (\Exception $e) {
+            return null; // 에러 발생 시 null 리턴
+        }
     }
 }
