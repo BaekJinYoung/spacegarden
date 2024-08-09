@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ApiResponse;
-use DOMDocument;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Symfony\Component\DomCrawler\Crawler;
+use DOMDocument;
 
 class BlogController extends Controller
 {
@@ -19,7 +17,8 @@ class BlogController extends Controller
         $this->client = $client;
     }
 
-    function getBlogPosts() {
+    public function getBlogPosts()
+    {
         $client = new Client();
 
         $clientId = 'zq6e8lRLTCQqCVh1UfGt';  // 네이버 애플리케이션의 Client ID
@@ -56,15 +55,18 @@ class BlogController extends Controller
         // 중복 제거
         $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
 
+        // 첫 번째 이미지 URL 추가
         $postsWithImages = $this->addFirstImageToPosts($uniquePosts);
 
-        $limitedPosts = array_slice($uniquePosts, 0, 20);
+        // 최대 20개의 게시물만 리턴
+        $limitedPosts = array_slice($postsWithImages, 0, 20);
 
         return ApiResponse::success(array_values($limitedPosts));
     }
 
     // 중복 게시물 제거 함수
-    private function removeDuplicatePosts($posts) {
+    private function removeDuplicatePosts($posts)
+    {
         $unique = [];
         $seen = [];
 
@@ -79,6 +81,7 @@ class BlogController extends Controller
         return $unique;
     }
 
+    // 첫 번째 이미지 URL 추가 함수
     private function addFirstImageToPosts($posts)
     {
         $client = new Client();
