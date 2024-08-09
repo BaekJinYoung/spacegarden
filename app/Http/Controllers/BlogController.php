@@ -10,6 +10,14 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class BlogController extends Controller
 {
+    protected $client; // Guzzle Client 인스턴스를 위한 속성 선언
+
+    // 생성자에서 Guzzle Client 주입
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
     function getBlogPosts() {
         $client = new Client();
 
