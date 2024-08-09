@@ -41,24 +41,31 @@ class BlogController extends Controller
             ]);
 
             $data = json_decode($response->getBody(), true);
-
-            $posts = array_filter($data['items'], function($post) {
-                return strpos($post['bloggerlink'], 'blog.naver.com/niceout86') !== false;
-            });
-
             $posts = array_map(function($post) {
-                unset($post['bloggername'], $post['bloggerlink']);
+                unset($post['bloggername']);
+                return $post;
+            }, $data['items']);
+
+            foreach ($posts as &$post) {
                 $post['title'] = $this->removeBoldTags($post['title']);
                 $post['description'] = $this->removeBoldTags($post['description']);
                 $post['postdate_formatted'] = Carbon::parse($post['postdate'])->format('Y-m-d');
                 unset($post['postdate']);
-                return $post;
-            }, $data['items']);
+            }
 
             $allPosts = array_merge($allPosts, $posts);
         }
 
-        $uniquePosts = $this->removeDuplicatePosts($allPosts);
+        $filteredPosts = array_filter($allPosts, function($post) {
+            return strpos($post['bloggerlink'], 'blog.naver.com/niceout86') !== false;
+        });
+
+        $filteredPosts = array_map(function($allPosts) {
+            unset($allPosts['bloggerlink']);
+            return $allPosts;
+        }, $data['items']);
+
+        $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
         $limitedPosts = array_slice($uniquePosts, 0, 20);
 
         return ApiResponse::success(array_values($limitedPosts));
