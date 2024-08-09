@@ -46,10 +46,10 @@ class BlogController extends Controller
 
                 // 각 게시물의 본문에서 이미지를 추출
                 foreach ($posts as &$post) {
+                    $post['title'] = $this->removeBoldTags($post['title']);
                     // 이미지 검색을 위한 제목 캐싱
                     if (!isset($post['images'])) {
-                        //$post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
-                        $post['images'] = $post['title'];
+                        $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
                     }
                     $post['description'] = $this->removeBoldTags($post['description']);
                 }
