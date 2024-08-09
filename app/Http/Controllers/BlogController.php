@@ -34,11 +34,6 @@ class BlogController extends Controller
             $data = json_decode($response->getBody(), true);
             $posts = $data['items'];
 
-            foreach ($posts as &$post) {
-                // 이미지 정보 추가
-                $post['images'] = $this->extractImagesFromUrl($post['link']);
-            }
-
             // 결과를 배열에 추가
             $allPosts = array_merge($allPosts, $posts);
         }
@@ -50,28 +45,13 @@ class BlogController extends Controller
         // 중복 제거
         $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
 
+        foreach ($uniquePosts as &$post) {
+            $post['first_image_url'] = $this->getFirstImageUrl($post['link']);
+        }
+
         $limitedPosts = array_slice($uniquePosts, 0, 20);
 
         return ApiResponse::success(array_values($limitedPosts));
-    }
-
-    private function extractImagesFromUrl($url) {
-        $client = new Client();
-        $response = $client->request('GET', $url);
-        $html = $response->getBody()->getContents();
-
-        $dom = new \DOMDocument();
-        @$dom->loadHTML($html); // @기호로 경고를 무시합니다.
-
-        $xpath = new \DOMXPath($dom);
-        $imageNodes = $xpath->query('//img');
-
-        $images = [];
-        foreach ($imageNodes as $node) {
-            $images[] = $node->getAttribute('src');
-        }
-
-        return $images;
     }
 
     // 중복 게시물 제거 함수
@@ -88,5 +68,26 @@ class BlogController extends Controller
         }
 
         return $unique;
+    }
+
+    private function getFirstImageUrl($url) {
+        $client = new Client();
+        try {
+            $response = $client->request('GET', $url);
+            $body = $response->getBody()->getContents();
+
+            $dom = new \DOMDocument();
+            @$dom->loadHTML($body);
+            $xpath = new \DOMXPath($dom);
+            $images = $xpath->query('//img');
+
+            if ($images->length > 0) {
+                return $images->item(0)->getAttribute('src');
+            }
+        } catch (\Exception $e) {
+            // 예외 처리 로직 (예: 로그 기록)
+        }
+
+        return null;
     }
 }
