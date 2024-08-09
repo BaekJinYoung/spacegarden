@@ -38,10 +38,12 @@ class SnsController extends Controller
      *     ],
      *     "blog_posts": [
      *       {
-     *         "title": "Example Blog Post Title", // 블로그 게시물 제목
-     *         "link": "https://blog.naver.com/example", // 블로그 게시물 URL
-     *         "description": "Example blog post description.", // 블로그 게시물 설명
-     *         "bloggerlink": "blog.naver.com/niceout86" // 블로거 링크
+     *         "title": "주부 9단 만드는 체계적인 강서정리수납", // 블로그 게시물 제목
+     *         "link": "https://blog.naver.com/niceout86/223541899713", // 블로그 게시물 URL
+     *         "description": "그렇다면 공간정원의 정리수납 컨설팅을 통해 지금보다 더욱 넓고 쾌적한 공간에서 생활을 시작해 보세요! 감사합니다:) 삶이 바뀌는 마법같은 정리 이야기 국내 최고의 정리전문기업 【이정원... ", // 블로그 게시물 요약
+     *         "bloggername": "공간정원 연구소", // 블로그 이름
+     *         "bloggerlink": "blog.naver.com/niceout86", // 블로그 주소
+     *         "postdate": "20240809" // 게시물 작성일
      *       }
      *     ]
      *   }

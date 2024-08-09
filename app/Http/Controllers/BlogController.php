@@ -42,7 +42,7 @@ class BlogController extends Controller
             $data = json_decode($response->getBody(), true);
             $posts = $data['items'];
 
-            foreach ($posts as $post) {
+            foreach ($posts as &$post) {
                 $post['title'] = $this->removeBoldTags($post['title']);
                 $post['description'] = $this->removeBoldTags($post['description']);
             }
