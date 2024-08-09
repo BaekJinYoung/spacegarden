@@ -14,7 +14,7 @@ class BlogController extends Controller
         $clientId = 'zq6e8lRLTCQqCVh1UfGt';  // 네이버 애플리케이션의 Client ID
         $clientSecret = '9okmubdb5x';  // 네이버 애플리케이션의 Client Secret
 
-        $query = 'niceout86';
+        $query = '"공간정리연구소"';
 
         $response = $client->request('GET', 'https://openapi.naver.com/v1/search/blog', [
             'headers' => [
@@ -23,7 +23,7 @@ class BlogController extends Controller
             ],
             'query' => [
                 'query' => $query,
-                'display' => 40, // 가져올 게시물 수
+                'display' => 20, // 가져올 게시물 수
                 'start' => 1, // 시작 인덱스
                 'sort' => 'date', // 정렬 기준 (sim: 유사도, date: 날짜)
             ],
