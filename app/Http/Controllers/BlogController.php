@@ -89,7 +89,7 @@ class BlogController extends Controller
         foreach ($posts as &$post) {
             $iframeUrl = $this->getIframeUrl($post['link']);
             if ($iframeUrl) {
-                $post['firstImage'] = $this->getFirstImageFromPost($client, $iframeUrl);
+                $post['firstImage'] = $this->getFirstImageFromIframe($client, $iframeUrl);
             } else {
                 $post['firstImage'] = null; // iframe URL을 찾지 못한 경우 null 리턴
             }
@@ -118,8 +118,8 @@ class BlogController extends Controller
         }
     }
 
-    // 블로그 게시물에서 첫 번째 이미지 URL을 가져오는 함수
-    private function getFirstImageFromPost($client, $iframeUrl)
+    // iframe에서 첫 번째 이미지 URL을 가져오는 함수
+    private function getFirstImageFromIframe($client, $iframeUrl)
     {
         try {
             $response = $client->request('GET', $iframeUrl);
@@ -128,10 +128,15 @@ class BlogController extends Controller
             $dom = new DOMDocument();
             @$dom->loadHTML($html);
 
+            // 이미지 태그 추출
             $images = $dom->getElementsByTagName('img');
 
-            if ($images->length > 0) {
-                return $images->item(0)->getAttribute('src');
+            foreach ($images as $image) {
+                $src = $image->getAttribute('src');
+                // 일반적인 이미지 URL 필터링
+                if (strpos($src, 'http') === 0) {
+                    return $src;
+                }
             }
 
             return null; // 이미지가 없는 경우 null 리턴
