@@ -38,10 +38,16 @@ class BlogController extends Controller
             $allPosts = array_merge($allPosts, $posts);
         }
 
-        // 중복 제거
-        $uniquePosts = $this->removeDuplicatePosts($allPosts);
+        $filteredPosts = array_filter($allPosts, function($post) {
+            return strpos($post['bloggerlink'], 'blog.naver.com/niceout86') !== false;
+        });
 
-        return ApiResponse::success(array_values($uniquePosts));
+        // 중복 제거
+        $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
+
+        $limitedPosts = array_slice($uniquePosts, 0, 20);
+
+        return ApiResponse::success(array_values($limitedPosts));
     }
 
     // 중복 게시물 제거 함수
