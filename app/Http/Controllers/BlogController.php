@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ApiResponse;
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use DOMDocument;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
@@ -103,20 +105,18 @@ class BlogController extends Controller
             $dom = new DOMDocument();
             @$dom->loadHTML($html);
 
-            // 이미지 태그 추출
             $images = $dom->getElementsByTagName('img');
-
             foreach ($images as $image) {
                 $src = $image->getAttribute('src');
-                // 일반적인 이미지 URL 필터링
-                if (strpos($src, 'http') === 0) {
+                if (preg_match('/^(https?:\/\/)/', $src)) {
                     return $src;
                 }
             }
-
-            return null; // 이미지가 없는 경우 null 리턴
-        } catch (\Exception $e) {
-            return null; // 에러 발생 시 null 리턴
+            return null;
+        } catch (Exception $e) {
+            Log::error('Image fetch failed: ' . $e->getMessage());
+            return null;
         }
     }
+
 }
