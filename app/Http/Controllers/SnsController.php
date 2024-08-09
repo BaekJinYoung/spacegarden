@@ -8,15 +8,13 @@ use Illuminate\Http\Request;
 
 class SnsController extends Controller
 {
-    private $instagramAccessToken;
-    private $naverClientId;
-    private $naverClientSecret;
+    private $instagramController;
+    private $blogController;
 
-    public function __construct()
+    public function __construct(InstagramController $instagramController, BlogController $blogController)
     {
-        $this->instagramAccessToken = env('INSTAGRAM_ACCESS_TOKEN');
-        $this->naverClientId = 'zq6e8lRLTCQqCVh1UfGt';
-        $this->naverClientSecret = '9okmubdb5x';
+        $this->instagramController = $instagramController;
+        $this->blogController = $blogController;
     }
 
     /**
@@ -32,7 +30,6 @@ class SnsController extends Controller
      *   "data": {
      *     "instagram_posts": [
      *       {
-     *         "id": "18099532147430854", // 미디어 ID
      *         "permalink": "https://www.instagram.com/p/C-bh0bTz1hu/", // 인스타그램 게시물 URL
      *         "media_type": "CAROUSEL_ALBUM", // 미디어 유형 (IMAGE, VIDEO, CAROUSEL_ALBUM)
      *         "media_url": "https://scontent-nrt1-2.cdninstagram.com/v/t51.29350-15/454639965_515905504308983_1690389984879416330_n.heic", // 미디어 URL
@@ -53,44 +50,18 @@ class SnsController extends Controller
 
     public function getSnsPosts()
     {
-        $client = new Client();
-
         try {
             // Fetch Instagram posts
-            $instagramUserId = '8906428979373592';
-            $limit = 20;
-            $instagramUrl = "https://graph.instagram.com/$instagramUserId/media?fields=id,permalink,media_type,media_url,thumbnail_url&limit=$limit&access_token=$this->instagramAccessToken";
-            $instagramResponse = $client->request('GET', $instagramUrl);
-            $instagramData = json_decode($instagramResponse->getBody(), true);
-            $instagramPosts = array_map(function($post) {
-                unset($post['id']);
-                return $post;
-            }, $instagramData['data']);
+            $instagramResponse = $this->instagramController->getInstagramPosts();
+            $instagramPosts = $instagramResponse->getData(true)['data'];
 
             // Fetch Naver blog posts
-            $query = '"공간정리연구소"';
-            $blogResponse = $client->request('GET', 'https://openapi.naver.com/v1/search/blog', [
-                'headers' => [
-                    'X-Naver-Client-Id' => $this->naverClientId,
-                    'X-Naver-Client-Secret' => $this->naverClientSecret,
-                ],
-                'query' => [
-                    'query' => $query,
-                    'display' => 20,
-                    'start' => 1,
-                    'sort' => 'date',
-                ],
-            ]);
-            $blogData = json_decode($blogResponse->getBody(), true);
-
-            // Filter blog posts
-            $filteredBlogPosts = array_filter($blogData['items'], function ($post) {
-                return $post['bloggerlink'] === 'blog.naver.com/niceout86';
-            });
+            $blogResponse = $this->blogController->getBlogPosts();
+            $blogPosts = $blogResponse->getData(true)['data'];
 
             return ApiResponse::success([
                 'instagram_posts' => $instagramPosts,
-                'blog_posts' => array_values($filteredBlogPosts),
+                'blog_posts' => $blogPosts,
             ]);
 
         } catch (\Exception $e) {
