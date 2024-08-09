@@ -42,9 +42,9 @@ class BlogController extends Controller
             $data = json_decode($response->getBody(), true);
             $posts = $data['items'];
 
-//            foreach ($posts as &$post) {
-//                $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
-//            }
+            foreach ($posts as $post) {
+                $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+            }
 
             // 결과를 배열에 추가
             $allPosts = array_merge($allPosts, $posts);
