@@ -46,7 +46,7 @@ class BlogController extends Controller
 
                 // 각 게시물의 본문에서 이미지를 추출
                 foreach ($posts as &$post) {
-                    $post['images'] = $this->extractImagesFromBlog($post['link']);
+                    $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
                 }
 
                 // 결과를 배열에 추가
