@@ -48,7 +48,8 @@ class BlogController extends Controller
                 foreach ($posts as &$post) {
                     // 이미지 검색을 위한 제목 캐싱
                     if (!isset($post['images'])) {
-                        $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+                        //$post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+                        $post['images'] = $post['title'];
                     }
                     $post['description'] = $this->removeBoldTags($post['description']);
                 }
