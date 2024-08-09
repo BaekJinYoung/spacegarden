@@ -119,12 +119,12 @@ class ValidationService
     protected function validateReview(Request $request): array
     {
         $rules = [
+            'is_featured' => 'required|boolean',
             'title' => 'required|string|max:255',
             'content' => 'required',
             'filter_category' => 'required',
             'filter_area' => 'required',
             'image' => 'required',
-            'is_featured' => 'required|boolean',
             'file' => 'nullable',
         ];
 
