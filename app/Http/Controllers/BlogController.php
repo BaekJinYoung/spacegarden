@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ApiResponse;
-use Exception;
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
-use DOMDocument;
-use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
@@ -46,6 +42,10 @@ class BlogController extends Controller
             $data = json_decode($response->getBody(), true);
             $posts = $data['items'];
 
+            foreach ($posts as &$post) {
+                $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+            }
+
             // 결과를 배열에 추가
             $allPosts = array_merge($allPosts, $posts);
         }
@@ -57,13 +57,29 @@ class BlogController extends Controller
         // 중복 제거
         $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
 
-        // 첫 번째 이미지 URL 추가
-        $postsWithImages = $this->addFirstImageToPosts($uniquePosts);
-
         // 최대 20개의 게시물만 리턴
-        $limitedPosts = array_slice($postsWithImages, 0, 20);
+        $limitedPosts = array_slice($uniquePosts, 0, 20);
 
         return ApiResponse::success(array_values($limitedPosts));
+    }
+
+    private function searchImages($query, $clientId, $clientSecret)
+    {
+        $client = $this->client;
+
+        $response = $client->request('GET', 'https://openapi.naver.com/v1/search/image', [
+            'headers' => [
+                'X-Naver-Client-Id' => $clientId,
+                'X-Naver-Client-Secret' => $clientSecret,
+            ],
+            'query' => [
+                'query' => $query,
+                'display' => 1, // 이미지 검색 결과를 1개만 가져옴
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        return $data['items'][0]['link'] ?? null; // 이미지 링크가 없으면 null 반환
     }
 
     // 중복 게시물 제거 함수
@@ -81,44 +97,6 @@ class BlogController extends Controller
         }
 
         return $unique;
-    }
-
-    // 첫 번째 이미지 URL 추가 함수
-    private function addFirstImageToPosts($posts)
-    {
-        $client = new Client();
-
-        foreach ($posts as &$post) {
-                $post['firstImage'] = $this->getFirstImageFromIframe($client, $post['link']);
-        }
-
-        return $posts;
-    }
-
-    // iframe에서 첫 번째 이미지 URL을 가져오는 함수
-    private function getFirstImageFromIframe($client, $iframeUrl)
-    {
-        try {
-            $response = $client->request('GET', $iframeUrl);
-            $html = $response->getBody()->getContents();
-
-            $dom = new DOMDocument();
-            @$dom->loadHTML($html);
-
-            $images = $dom->getElementsByTagName('img');
-            foreach ($images as $image) {
-                $src = $image->getAttribute('src');
-                if (preg_match('/^(https?:\/\/)/', $src)) {
-                    return $src;
-                }
-            }
-            return null;
-        } catch (Exception $e) {
-            Log::error('Image fetch failed: ' . $e->getMessage(), [
-                'iframeUrl' => $iframeUrl,
-            ]);
-            return null;
-        }
     }
 
 }
