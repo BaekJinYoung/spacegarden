@@ -35,7 +35,7 @@ class BlogController extends Controller
                     ],
                     'query' => [
                         'query' => $keyword,
-                        'display' => 50, // 가져올 게시물 수
+                        'display' => 30, // 가져올 게시물 수
                         'start' => 1, // 시작 인덱스
                         'sort' => 'date', // 정렬 기준 (sim: 유사도, date: 날짜)
                     ],
