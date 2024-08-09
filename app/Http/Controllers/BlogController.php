@@ -80,20 +80,38 @@ class BlogController extends Controller
     private function searchImages($query, $clientId, $clientSecret)
     {
         $client = $this->client;
+        $retryCount = 0;
+        $maxRetries = 3; // 최대 재시도 횟수
+        $waitTime = 2; // 재시도 간 대기 시간 (초)
 
-        $response = $client->request('GET', 'https://openapi.naver.com/v1/search/image', [
-            'headers' => [
-                'X-Naver-Client-Id' => $clientId,
-                'X-Naver-Client-Secret' => $clientSecret,
-            ],
-            'query' => [
-                'query' => $query,
-                'display' => 1, // 이미지 검색 결과를 1개만 가져옴
-            ],
-        ]);
+        while ($retryCount < $maxRetries) {
+            try {
+                $response = $client->request('GET', 'https://openapi.naver.com/v1/search/image', [
+                    'headers' => [
+                        'X-Naver-Client-Id' => $clientId,
+                        'X-Naver-Client-Secret' => $clientSecret,
+                    ],
+                    'query' => [
+                        'query' => $query,
+                        'display' => 1, // 이미지 검색 결과를 1개만 가져옴
+                    ],
+                ]);
 
-        $data = json_decode($response->getBody(), true);
-        return $data['items'][0]['link'] ?? null; // 이미지 링크가 없으면 null 반환
+                $data = json_decode($response->getBody(), true);
+                return $data['items'][0]['link'] ?? null; // 이미지 링크가 없으면 null 반환
+            } catch (\GuzzleHttp\Exception\ClientException $e) {
+                if ($e->getResponse()->getStatusCode() == 429) {
+                    // 429 오류 발생 시 재시도
+                    $retryCount++;
+                    sleep($waitTime); // 대기 시간
+                } else {
+                    // 다른 오류 발생 시 예외를 다시 던짐
+                    throw $e;
+                }
+            }
+        }
+
+        return null;
     }
 
     // 중복 게시물 제거 함수
