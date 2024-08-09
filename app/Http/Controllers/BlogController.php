@@ -31,8 +31,10 @@ class BlogController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        $posts = $data['items'];
+        $filteredPosts = array_filter($data['items'], function ($post) {
+            return isset($post['bloggerlink']) && $post['bloggerlink'] === 'https://blog.naver.com/niceout86';
+        });
 
-        return ApiResponse::success($posts);
+        return ApiResponse::success(array_values($filteredPosts));
     }
 }
