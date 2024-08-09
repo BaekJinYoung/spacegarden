@@ -26,7 +26,7 @@ class InquiryRequest extends FormRequest
             'contact' => 'required|string',
             'inquiry_category' => 'nullable|string',
             'email' => 'nullable|string',
-            'message' => 'nullable|required',
+            'message' => 'nullable',
             'agreement' => [
                 'required',
                 'boolean',
