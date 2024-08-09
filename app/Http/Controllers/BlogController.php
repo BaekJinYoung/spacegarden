@@ -60,11 +60,6 @@ class BlogController extends Controller
             return strpos($post['bloggerlink'], 'blog.naver.com/niceout86') !== false;
         });
 
-        $filteredPosts = array_map(function($allPosts) {
-            unset($allPosts['bloggerlink']);
-            return $allPosts;
-        }, $data['items']);
-
         $uniquePosts = $this->removeDuplicatePosts($filteredPosts);
         $limitedPosts = array_slice($uniquePosts, 0, 20);
 
