@@ -83,6 +83,9 @@ class BlogController extends Controller
     private function getFirstImageUrl($url) {
         try {
             $response = $this->client->request('GET', $url, [
+                'headers' => [
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+                ],
                 'timeout' => 10,
             ]);
             $body = $response->getBody()->getContents();
@@ -90,10 +93,10 @@ class BlogController extends Controller
             Log::info('HTML Content:', ['content' => substr($body, 0, 2000)]);
 
             $crawler = new Crawler($body);
-            $firstImage = $crawler->filter('img')->first();
+            $images = $crawler->filter('img');
 
-            if ($firstImage->count() > 0) {
-                return $firstImage->attr('src');
+            if ($images->count() > 0) {
+                return $images->first()->attr('src');
             }else {
                 Log::info('No images found in HTML content.');
             }
