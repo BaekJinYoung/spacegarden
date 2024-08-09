@@ -29,8 +29,10 @@ class BlogController extends Controller
             ],
         ]);
 
-        $data = $response;
+        $data = json_decode($response->getBody(), true);
 
-        return ApiResponse::success($data);
+        $posts = $data['data'];
+
+        return ApiResponse::success($posts);
     }
 }
