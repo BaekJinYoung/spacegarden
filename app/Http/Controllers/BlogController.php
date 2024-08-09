@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ApiResponse;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Sunra\PhpSimple\HtmlDomParser;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\DomCrawler\Crawler;
 
 class BlogController extends Controller
@@ -79,13 +79,18 @@ class BlogController extends Controller
             ]);
             $body = $response->getBody()->getContents();
 
+            Log::info('HTML Content:', ['content' => substr($body, 0, 2000)]);
+
             $crawler = new Crawler($body);
             $firstImage = $crawler->filter('img')->first();
 
             if ($firstImage->count() > 0) {
                 return $firstImage->attr('src');
+            }else {
+                Log::info('No images found in HTML content.');
             }
         } catch (\Exception $e) {
+            Log::error('Error fetching first image URL: ' . $e->getMessage());
         }
 
         return null;
