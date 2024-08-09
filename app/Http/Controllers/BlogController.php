@@ -45,15 +45,19 @@ class BlogController extends Controller
                 $posts = $data['items'];
 
                 // 각 게시물의 본문에서 이미지를 추출
-                foreach ($posts as $post) {
-                    //$post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+                foreach ($posts as &$post) {
+                    // 이미지 검색을 위한 제목 캐싱
+                    if (!isset($post['images'])) {
+                        $post['images'] = $this->searchImages($post['title'], $clientId, $clientSecret);
+                    }
+                    $post['description'] = $this->removeBoldTags($post['description']);
                 }
 
                 // 결과를 배열에 추가
                 $allPosts = array_merge($allPosts, $posts);
 
                 // API 호출 사이에 지연 추가
-                sleep(1); // 1초 대기
+                sleep(2); // 1초 대기
             } catch (RequestException $e) {
                 // 예외 처리 로직 추가 (로그 기록 등)
                 continue;
@@ -109,4 +113,8 @@ class BlogController extends Controller
         return $unique;
     }
 
+    private function removeBoldTags($text)
+    {
+        return preg_replace('/<b>(.*?)<\/b>/i', '$1', $text);
+    }
 }
