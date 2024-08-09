@@ -17,14 +17,11 @@ class InstagramController extends Controller
 
     public function getInstagramPosts()
     {
-        // Guzzle 클라이언트를 사용하여 API 요청
         $client = new Client();
 
-        // 인스타그램 사용자 ID (사용자의 ID를 얻기 위해 'me?fields=id' 엔드포인트를 호출합니다.)
         $instagramUserId = '8906428979373592';
 
-        // API 요청 URL
-        $url = "https://graph.instagram.com/$instagramUserId/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=$this->accessToken";
+        $url = "https://graph.instagram.com/$instagramUserId/media?fields=permalink,media_type,media_url,thumbnail_url&access_token=$this->accessToken";
 
         try {
             $response = $client->request('GET', $url);
