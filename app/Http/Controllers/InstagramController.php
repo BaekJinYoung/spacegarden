@@ -55,7 +55,10 @@ class InstagramController extends Controller
             $response = $client->request('GET', $url);
             $data = json_decode($response->getBody(), true);
 
-            $posts = $data['data'];
+            $posts = array_map(function($post) {
+                unset($post['id']);
+                return $post;
+            }, $data['data']);
 
             return ApiResponse::success($posts);
 
