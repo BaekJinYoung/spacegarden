@@ -58,7 +58,8 @@ class SnsController extends Controller
         try {
             // Fetch Instagram posts
             $instagramUserId = '8906428979373592';
-            $instagramUrl = "https://graph.instagram.com/$instagramUserId/media?fields=id,permalink,media_type,media_url,thumbnail_url&access_token=$this->instagramAccessToken";
+            $limit = 20;
+            $instagramUrl = "https://graph.instagram.com/$instagramUserId/media?fields=id,permalink,media_type,media_url,thumbnail_url&limit=$limit&access_token=$this->instagramAccessToken";
             $instagramResponse = $client->request('GET', $instagramUrl);
             $instagramData = json_decode($instagramResponse->getBody(), true);
             $instagramPosts = $instagramData['data'];
