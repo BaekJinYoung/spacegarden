@@ -87,35 +87,10 @@ class BlogController extends Controller
         $client = new Client();
 
         foreach ($posts as &$post) {
-            $iframeUrl = $this->getIframeUrl($post['link']);
-            if ($iframeUrl) {
-                $post['firstImage'] = $this->getFirstImageFromIframe($client, $iframeUrl);
-            } else {
-                $post['firstImage'] = null; // iframe URL을 찾지 못한 경우 null 리턴
-            }
+                $post['firstImage'] = $this->getFirstImageFromIframe($client, $post['link']);
         }
 
         return $posts;
-    }
-
-    // iframe URL을 추출하는 함수
-    private function getIframeUrl($url)
-    {
-        try {
-            // blogId와 logNo 추출
-            preg_match('/blog.naver.com\/([\w\d]+)\/(\d+)/', $url, $matches);
-            if (count($matches) == 3) {
-                $blogId = $matches[1];
-                $logNo = $matches[2];
-
-                // iframe URL 생성
-                return "https://blog.naver.com/PostView.nhn?blogId={$blogId}&logNo={$logNo}";
-            }
-
-            return null;
-        } catch (\Exception $e) {
-            return null;
-        }
     }
 
     // iframe에서 첫 번째 이미지 URL을 가져오는 함수
